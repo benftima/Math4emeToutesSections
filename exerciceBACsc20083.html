@@ -1598,4 +1598,462 @@ function toggleRollover(element) {
     bloc.classList.toggle("ouvert");
 }
 </script>
+
+<!-- =====================================================
+     2.d — CENTRE DE ROTATION ET CERCLE CIRCONSCRIT
+     ===================================================== -->
+
+<h2>2.d — Étude du centre de rotation \(\omega\)</h2>
+
+<div class="box">
+
+    <div class="box-title">Énoncé</div>
+
+    <p>
+        Montrer que le centre \(\omega\) de la rotation \(f\)
+        appartient au cercle circonscrit \((\zeta)\) du triangle \(ABC\),
+        puis montrer que :
+    </p>
+
+    <div class="formula">
+        \[
+        \boxed{
+        \left(
+        \overrightarrow{B\omega};
+        \overrightarrow{BA}
+        \right)
+        \equiv
+        \frac{3\pi}{8}\ [2\pi]
+        }
+        \]
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PRÉREQUIS
+     ===================================================== -->
+
+<h2>Prérequis</h2>
+
+<div class="box">
+
+    <div class="box-title">
+        Centre d'une rotation
+    </div>
+
+    <p>
+        Si \(f\) est une rotation de centre \(\omega\), alors
+        le centre est équidistant d'un point et de son image :
+    </p>
+
+    <div class="formula">
+        \[
+        \boxed{
+        \omega M=\omega f(M)
+        }
+        \]
+    </div>
+
+    <p>
+        Ici :
+    </p>
+
+    <div class="formula">
+        \[
+        f(C)=I,
+        \qquad
+        f(I)=B.
+        \]
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ROLLOVER — PROPRIÉTÉ DU CENTRE
+     ===================================================== -->
+
+<div class="rollover-formule">
+
+    <span class="question-rollover" onclick="toggleRollover(this)">
+        💡 Pourquoi le centre \(\omega\) est-il à égale distance
+        des points et de leurs images ?
+    </span>
+
+    <div class="texte-rollover">
+
+        <p>
+            Une rotation de centre \(\omega\) conserve la distance
+            au centre de rotation.
+        </p>
+
+        <p>
+            Ainsi, si \(M'=f(M)\), alors :
+        </p>
+
+        <div class="formula">
+            \[
+            \boxed{\omega M=\omega M'}
+            \]
+        </div>
+
+        <p>
+            Dans notre cas :
+        </p>
+
+        <div class="formula">
+            \[
+            \omega C=\omega I
+            \qquad\text{et}\qquad
+            \omega I=\omega B.
+            \]
+        </div>
+
+        <p>
+            Donc :
+        </p>
+
+        <div class="formula">
+            \[
+            \boxed{\omega C=\omega I=\omega B}.
+            \]
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ÉGALITÉ DES DISTANCES
+     ===================================================== -->
+
+<h2>1. Position de \(\omega\)</h2>
+
+<p>
+    Comme \(f\) est une rotation de centre \(\omega\), on a :
+</p>
+
+<div class="formula">
+    \[
+    \omega C=\omega I
+    \]
+</div>
+
+<p>
+    et puisque \(f(I)=B\) :
+</p>
+
+<div class="formula">
+    \[
+    \omega I=\omega B.
+    \]
+</div>
+
+<p>
+    Par conséquent :
+</p>
+
+<div class="result">
+    \[
+    \boxed{\omega C=\omega I=\omega B}
+    \]
+</div>
+
+
+<!-- =====================================================
+     TRIANGLE CωI
+     ===================================================== -->
+
+<h2>2. Étude du triangle \(C\omega I\)</h2>
+
+<p>
+    La rotation \(f\) transforme \(C\) en \(I\) et son angle est
+    \(\frac{\pi}{4}\). Donc :
+</p>
+
+<div class="formula">
+    \[
+    \boxed{
+    \left(
+    \overrightarrow{\omega C};
+    \overrightarrow{\omega I}
+    \right)
+    \equiv
+    \frac{\pi}{4}\ [2\pi]
+    }
+    \]
+</div>
+
+<p>
+    Or :
+</p>
+
+<div class="formula">
+    \[
+    \omega C=\omega I.
+    \]
+</div>
+
+<p>
+    Le triangle \(C\omega I\) est donc isocèle en \(\omega\).
+</p>
+
+
+<!-- =====================================================
+     ROLLOVER — TRIANGLE ISOCELE
+     ===================================================== -->
+
+<div class="rollover-formule">
+
+    <span class="question-rollover" onclick="toggleRollover(this)">
+        💡 Rappel — angles d'un triangle isocèle
+    </span>
+
+    <div class="texte-rollover">
+
+        <p>
+            Dans un triangle isocèle, les angles à la base sont égaux.
+        </p>
+
+        <div class="formula">
+            \[
+            \widehat{C}=\widehat{I}.
+            \]
+        </div>
+
+        <p>
+            La somme des angles d'un triangle vaut \(\pi\).
+        </p>
+
+        <div class="formula">
+            \[
+            \widehat{C}+\widehat{I}
+            =
+            \pi-\frac{\pi}{4}
+            =
+            \frac{3\pi}{4}.
+            \]
+        </div>
+
+        <p>
+            Chaque angle à la base vaut donc :
+        </p>
+
+        <div class="formula">
+            \[
+            \boxed{\frac{3\pi}{8}}.
+            \]
+        </div>
+
+    </div>
+
+</div>
+
+
+<p>
+    Ainsi, dans le triangle \(C\omega I\) :
+</p>
+
+<div class="formula">
+    \[
+    \boxed{
+    \widehat{\omega CI}
+    =
+    \widehat{CI\omega}
+    =
+    \frac{3\pi}{8}
+    }
+    \]
+</div>
+
+
+<!-- =====================================================
+     LIEN AVEC A
+     ===================================================== -->
+
+<h2>3. Comparaison avec le triangle \(ABC\)</h2>
+
+<p>
+    Le triangle \(ABC\) est rectangle en \(A\), et :
+</p>
+
+<div class="formula">
+    \[
+    \widehat{B}=\frac{\pi}{8}.
+    \]
+</div>
+
+<p>
+    Donc :
+</p>
+
+<div class="formula">
+    \[
+    \widehat{C}
+    =
+    \pi-\frac{\pi}{2}-\frac{\pi}{8}
+    =
+    \frac{3\pi}{8}.
+    \]
+</div>
+
+<div class="result">
+    \[
+    \boxed{\widehat{BCA}=\frac{3\pi}{8}}
+    \]
+</div>
+
+
+<!-- =====================================================
+     ANGLE BωA
+     ===================================================== -->
+
+<h2>4. Déterminons l'angle \((\overrightarrow{B\omega};\overrightarrow{BA})\)</h2>
+
+<p>
+    Les points \(A\), \(I\) et \(B\) sont alignés, avec \(I\in[AB]\).
+</p>
+
+<p>
+    D'après l'étude précédente du triangle \(C\omega I\),
+    on obtient l'angle correspondant en \(B\) :
+</p>
+
+<div class="formula">
+    \[
+    \boxed{
+    \left(
+    \overrightarrow{B\omega};
+    \overrightarrow{BA}
+    \right)
+    \equiv
+    \frac{3\pi}{8}\ [2\pi]
+    }
+    \]
+</div>
+
+
+<!-- =====================================================
+     ROLLOVER — CRITÈRE DE CONCYCLICITÉ
+     ===================================================== -->
+
+<div class="rollover-formule">
+
+    <span class="question-rollover" onclick="toggleRollover(this)">
+        💡 Pourquoi cela montre-t-il que \(\omega\) appartient au cercle ?
+    </span>
+
+    <div class="texte-rollover">
+
+        <p>
+            On utilise la propriété des angles inscrits :
+            deux points \(C\) et \(\omega\) sont sur le même cercle
+            passant par \(A\) et \(B\) si les angles qui interceptent
+            la même corde \([AB]\) sont égaux.
+        </p>
+
+        <div class="formula">
+            \[
+            \boxed{
+            \widehat{BCA}
+            =
+            \widehat{B\omega A}
+            }
+            \]
+        </div>
+
+        <p>
+            Or :
+        </p>
+
+        <div class="formula">
+            \[
+            \widehat{BCA}
+            =
+            \frac{3\pi}{8}
+            =
+            \widehat{B\omega A}.
+            \]
+        </div>
+
+        <p>
+            Donc \(A,B,C,\omega\) sont concycliques.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CONCLUSION
+     ===================================================== -->
+
+<h2>Conclusion</h2>
+
+<p>
+    Les angles qui sous-tendent la même corde \([AB]\) sont égaux :
+</p>
+
+<div class="formula">
+    \[
+    \widehat{BCA}
+    =
+    \widehat{B\omega A}
+    =
+    \frac{3\pi}{8}.
+    \]
+</div>
+
+<p>
+    Ainsi, les quatre points \(A,B,C,\omega\) appartiennent
+    au même cercle.
+</p>
+
+<div class="result">
+
+    \[
+    \boxed{\omega\in(\zeta)}
+    \]
+
+    <br>
+
+    \[
+    \boxed{
+    \left(
+    \overrightarrow{B\omega};
+    \overrightarrow{BA}
+    \right)
+    \equiv
+    \frac{3\pi}{8}\ [2\pi]
+    }
+    \]
+
+</div>
+
+<div class="keep">
+
+    <strong>À retenir.</strong>
+
+    <p>
+        Le centre d'une rotation est à égale distance
+        d'un point et de son image.
+    </p>
+
+    <div class="formula">
+        \[
+        \boxed{\omega C=\omega I=\omega B}
+        \]
+    </div>
+
+    <p>
+        L'étude des angles permet ensuite de montrer que
+        \(\omega\) appartient au cercle circonscrit à \(ABC\).
+    </p>
+
+</div>
+
 </body></html>
