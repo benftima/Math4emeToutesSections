@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Exercice 7 — Préparation et correction</title>
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},
+svg:{fontCache:'global'}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#e8e8e8;color:#222;font-family:"Times New Roman",serif;line-height:1.48}
+.page{width:210mm;min-height:297mm;margin:10mm auto;background:#fff;padding:13mm 16mm;box-shadow:0 2px 10px #aaa}
+.header{border-bottom:1.5px solid #222;padding-bottom:7px;margin-bottom:15px}
+.header .left{font-weight:bold;font-size:15px}
+.header .right{float:right;font-size:13px}
+h1{font-size:22px;text-align:center;margin:10px 0 16px}
+h2{font-size:18px;margin:19px 0 8px;border-bottom:1px solid #777;padding-bottom:3px}
+h3{font-size:16px;margin:14px 0 5px}
+p{margin:7px 0}
+.box{border:1px solid #555;padding:9px 12px;margin:11px 0;background:#fafafa}
+.box-title{font-weight:bold;margin-bottom:5px}
+.formula{margin:7px 0;text-align:center}
+.step{margin:9px 0}
+.result{border-top:1.5px solid #333;border-bottom:1.5px solid #333;padding:8px;margin:13px 0;text-align:center;font-weight:bold}
+.note{font-size:13px;font-style:italic}
+.keep{border-left:4px solid #555;padding-left:10px;margin:12px 0}
+.small{font-size:13px}
+@media print{body{background:#fff}.page{margin:0;box-shadow:none}}
+
+
+/* =====================================================
+   LIEN INTERACTIF — DÉMONSTRATION
+   ===================================================== */
+
+.derivation-link {
+    margin: 16px 0;
+}
+
+.derivation-link details {
+    margin: 0;
+}
+
+/* Question fermée */
+
+.derivation-link summary {
+    cursor: pointer;
+    padding: 7px 4px;
+
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bold;
+
+    color: #333;
+
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+
+    list-style: none;
+}
+
+.derivation-link summary::-webkit-details-marker {
+    display: none;
+}
+
+.derivation-link summary:hover {
+    text-decoration: underline;
+}
+
+
+/* =====================================================
+   DÉMONSTRATION OUVERTE
+   ===================================================== */
+
+.derivation {
+    margin-top: 6px;
+    padding: 12px 16px 14px 16px;
+
+    /* différence légère avec la page */
+    background: #f6f6f2;
+
+    border-left: 3px solid #777;
+    border-right: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+
+    animation: apparition .25s ease;
+}
+
+@keyframes apparition {
+
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.derivation h3 {
+    margin-top: 2px;
+    margin-bottom: 10px;
+
+    font-size: 17px;
+
+    border-bottom: 1px solid #999;
+    padding-bottom: 4px;
+}
+
+.derivation-result {
+    margin: 14px 0;
+    padding: 7px;
+
+    text-align: center;
+
+    background: #eeeeea;
+
+    border-top: 1px solid #777;
+    border-bottom: 1px solid #777;
+}
+
+.derivation .note {
+    font-size: 13px;
+    color: #555;
+    font-style: italic;
+}
+/* =====================================================
+   ROLLOVER — TEXTE AU SURVOL
+   ===================================================== */
+
+.rollover-formule {
+    position: relative;
+    display: inline-block;
+    margin: 14px 0;
+}
+
+.question-rollover {
+    display: inline-block;
+
+    padding: 5px 8px;
+
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bold;
+
+    cursor: help;
+
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+
+
+/* Texte caché */
+
+.texte-rollover {
+    position: absolute;
+
+    left: 0;
+    top: calc(100% + 5px);
+
+    width: 430px;
+
+    padding: 12px 16px;
+
+    background: #f7f7f2;
+
+    border: 1px solid #999;
+    border-left: 3px solid #777;
+
+    box-shadow: 2px 3px 8px rgba(0,0,0,.12);
+
+    font-size: 14px;
+
+    visibility: hidden;
+    opacity: 0;
+
+    z-index: 100;
+
+    transition: opacity .18s ease;
+}
+
+
+/* Apparition lorsque la souris est sur la question */
+
+.rollover-formule:hover .texte-rollover {
+    visibility: visible;
+    opacity: 1;
+}
+.enonce-rollover {
+    position: relative;
+    display: inline-block;
+    margin: 8px 0 14px 0;
+}
+
+.enonce-question {
+    display: inline-block;
+    padding: 5px 8px;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: italic;
+    cursor: pointer;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+
+.enonce-cache {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 520px;
+    max-height: 520px;
+    overflow-y: auto;
+    padding: 12px 16px;
+    background: #f7f7f2;
+    border: 1px solid #999;
+    border-left: 3px solid #777;
+    box-shadow: 2px 4px 10px rgba(0,0,0,.18);
+    font-size: 13px;
+    line-height: 1.35;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 9999;
+    transition: opacity .18s ease;
+}
+
+.enonce-rollover:hover .enonce-cache {
+    visibility: visible;
+    opacity: 1;
+}
+
+.enonce-titre {
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #999;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+}
+
+.enonce-cache p {
+    margin: 5px 0;
+}
+
+.enonce-cache mjx-container {
+    font-size: 88% !important;
+}
+
+/* ===== OUVERT APRÈS CLIC ===== */
+.enonce-rollover.enonce-ouvert .enonce-cache,
+.rollover-formule.ouvert .texte-rollover {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ===== RESPONSIVE ===== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+}
+
+.page {
+    width: 210mm;
+    max-width: 100%;
+    margin: auto;
+}
+
+/* Images */
+img, svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Formules MathJax */
+mjx-container {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* ===== PETITS ÉCRANS ===== */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 8px;
+    }
+
+    .page {
+        width: 100%;
+        padding: 12px;
+        border: none;
+    }
+
+    h1 {
+        font-size: 21px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .texte-rollover,
+    .enonce-cache {
+        width: min(92vw, 430px);
+        max-width: 92vw;
+        left: 0;
+    }
+
+    .question-rollover,
+    .enonce-question {
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+<body><div class="page">
+<!-- =====================================================
+     ÉNONCÉ DE L'EXERCICE — ROLLOVER
+     ===================================================== -->
+
+<div class="enonce-rollover">
+
+    <span class="enonce-question" onclick="toggleEnonce(this)">
+        📘 Voulez-vous voir l'énoncé de l'exercice ?
+    </span>
+
+    <div class="enonce-cache">
+
+        <div class="enonce-titre">
+            Exercice n°7 — S. 2008
+        </div>
+
+        <p>
+            Le plan est orienté dans le sens direct.
+        </p>
+
+        <p>
+            \(ABC\) est un triangle rectangle en \(A\) tel que
+        </p>
+
+        \[
+        \left(
+        \overrightarrow{BC};
+        \overrightarrow{BA}
+        \right)
+        \equiv
+        \frac{\pi}{8}
+        \pmod{2\pi}.
+        \]
+
+        <p>
+            \(O\) est le milieu de \([BC]\) et \(I\) est le barycentre
+            des points pondérés \((A,\sqrt2)\) et \((B,1)\).
+        </p>
+
+        <p>
+            <strong>1.</strong>
+            Montrer que
+        </p>
+
+        \[
+        \tan\left(\frac{\pi}{8}\right)
+        =
+        \frac{1}{1+\sqrt2}.
+        \]
+
+        <p>
+            <strong>2.</strong>
+            a) Montrer que \(AI=AC\).
+        </p>
+
+        <p>
+            b) Montrer qu'il existe un unique déplacement \(f\) tel que
+        </p>
+
+        \[
+        f(C)=I,
+        \qquad
+        f(I)=B.
+        \]
+
+        <p>
+            c) Montrer que \(f\) est une rotation.
+            Déterminer son angle et construire son centre \(\omega\).
+        </p>
+
+        <p>
+            d) Montrer que \(\omega\) appartient au cercle circonscrit
+            au triangle \(ABC\).
+        </p>
+
+        <p>
+            <strong>3.</strong>
+            La parallèle à \((AC)\) passant par \(\omega\)
+            coupe le cercle une seconde fois en \(F\).
+        </p>
+
+        <p>
+            <strong>4.</strong>
+            On considère les médiatrices
+            \(\Delta_1,\Delta_2,\Delta_3\) et
+        </p>
+
+        \[
+        g=
+        S_{\Delta_3}\circ
+        S_{\Delta_2}\circ
+        S_{\Delta_1}.
+        \]
+
+        <p>
+            <strong>5.</strong>
+            Déterminer la nature et les éléments caractéristiques
+            des transformations \(\varphi\) et \(\psi\).
+        </p>
+
+    </div>
+
+</div>
+    
+<div class="header">
+<span class="left">TRANSFORMATIONS DU PLAN</span>
+<span class="right">Exercice 7 — S. 2008</span>
+<div class="small">Préparation — Trigonométrie</div>
+</div>
+<h1>Préparation à la question 1</h1>
+
+<div class="box">
+<div class="box-title">Objectif</div>
+<p>Montrer que</p>
+<div class="formula">\[\boxed{\tan\left(\frac{\pi}{8}\right)=\frac{1}{1+\sqrt2}}\]</div>
+</div>
+
+<h2>Rappel des propriétés</h2>
+
+<div class="box">
+<div class="box-title">Formules d'addition</div>
+<p>On rappelle les deux formules fondamentales :</p>
+<div class="formula">\[\boxed{\cos(a+b)=\cos a\cos b-\sin a\sin b}\]</div>
+<div class="formula">\[\boxed{\sin(a+b)=\sin a\cos b+\cos a\sin b}\]</div>
+</div>
+
+<h2>De l'addition à l'angle double</h2>
+
+<div class="step">
+<p>Dans les deux formules, prenons \(b=a\).</p>
+</div>
+
+<h3>Cosinus</h3>
+<div class="formula">\[
+\cos(2a)=\cos^2a-\sin^2a
+\]</div>
+<p>Comme \(\sin^2a=1-\cos^2a\),</p>
+<div class="formula">\[
+\cos(2a)=2\cos^2a-1.
+\]</div>
+<div class="formula">\[\boxed{\cos(2a)=2\cos^2a-1}\]</div>
+
+<h3>Sinus</h3>
+<div class="formula">\[
+\sin(2a)=2\sin a\cos a.
+\]</div>
+<div class="formula">\[\boxed{\sin(2a)=2\sin a\cos a}\]</div>
+
+<h2>Préparons l'angle moitié</h2>
+
+<p>On remplace maintenant \(2a\) par \(x\). Ainsi \(a=\frac{x}{2}\).</p>
+
+<h3>Pour le cosinus</h3>
+<div class="formula">\[
+\cos x=2\cos^2\left(\frac{x}{2}\right)-1
+\]</div>
+<div class="formula">\[
+\boxed{1+\cos x=2\cos^2\left(\frac{x}{2}\right)}
+\]</div>
+
+<h3>Pour le sinus</h3>
+<div class="formula">\[
+\boxed{\sin x=
+2\sin\left(\frac{x}{2}\right)
+\cos\left(\frac{x}{2}\right)}
+\]</div>
+
+<h2>Construisons la formule de la tangente</h2>
+
+<div class="box">
+<div class="box-title">Définition</div>
+<div class="formula">\[
+\tan\left(\frac{x}{2}\right)=
+\frac{\sin(x/2)}{\cos(x/2)}
+\]</div>
+</div>
+
+<p>Or, les deux formules précédentes donnent :</p>
+
+<div class="formula">\[
+\frac{\sin x}{1+\cos x}
+=
+\frac{2\sin(x/2)\cos(x/2)}
+{2\cos^2(x/2)}
+\]</div>
+
+<div class="formula">\[
+=
+\frac{\sin(x/2)}{\cos(x/2)}
+=
+\tan\left(\frac{x}{2}\right).
+\]</div>
+
+<div class="result">
+\[\boxed{\tan\left(\frac{x}{2}\right)=
+\frac{\sin x}{1+\cos x}}\]
+</div>
+
+<h2>Application à notre exercice</h2>
+
+<p>On cherche \(\tan\left(\frac{\pi}{8}\right)\). Or</p>
+
+<div class="formula">\[
+\frac{\pi}{8}=\frac12\cdot\frac{\pi}{4}.
+\]</div>
+
+<p>On prend donc \(x=\frac{\pi}{4}\) :</p>
+
+<div class="formula">\[
+\tan\left(\frac{\pi}{8}\right)
+=
+\frac{\sin(\pi/4)}
+{1+\cos(\pi/4)}.
+\]</div>
+
+<p>Avec</p>
+
+<div class="formula">\[
+\sin\left(\frac{\pi}{4}\right)=
+\cos\left(\frac{\pi}{4}\right)=\frac{\sqrt2}{2},
+\]</div>
+
+<p>on obtient :</p>
+
+<div class="formula">\[
+\tan\left(\frac{\pi}{8}\right)
+=
+\frac{\frac{\sqrt2}{2}}
+{1+\frac{\sqrt2}{2}}
+=
+\frac{\sqrt2}{2+\sqrt2}.
+\]</div>
+
+<p>En rationalisant :</p>
+
+<div class="formula">\[
+\frac{\sqrt2}{2+\sqrt2}
+=
+\sqrt2-1
+=
+\frac{1}{1+\sqrt2}.
+\]</div>
+
+<div class="result">
+\[\boxed{\tan\left(\frac{\pi}{8}\right)=
+\frac{1}{1+\sqrt2}}\]
+</div>
+
+<div class="keep">
+<strong>À retenir.</strong>
+Les deux formules d'addition du sinus et du cosinus suffisent
+pour retrouver les formules d'angle double, puis celles de l'angle moitié.
+</div>
+
+<p class="note">Présentation volontairement sobre : formules, étapes et résultats, dans l'esprit d'une page de manuel scolaire.</p>
+<!-- =====================================================
+     QUESTION 2.a — BARYCENTRE
+     ===================================================== -->
+
+<h2>2.a — Montrer que \(AI=AC\)</h2>
+
+<div class="box">
+    <div class="box-title">Énoncé</div>
+
+    <p>
+        \(I\) est le barycentre des points pondérés
+        \((A,\sqrt2)\) et \((B,1)\).
+    </p>
+
+    <p>Montrer que :</p>
+
+    <div class="formula">
+        \[
+        \boxed{AI=AC}
+        \]
+    </div>
+</div>
+
+
+<h2>Prérequis — Barycentre de deux points</h2>
+
+<div class="box">
+
+    <div class="box-title">Définition</div>
+
+    <p>
+        Soient \(A\) et \(B\) deux points affectés des coefficients
+        \( \alpha \) et \( \beta \), avec
+        \( \alpha+\beta\neq0 \).
+    </p>
+
+    <p>
+        Leur barycentre \(I\) est caractérisé par :
+    </p>
+
+    <div class="formula">
+        \[
+        \boxed{
+        \alpha\overrightarrow{IA}
+        +
+        \beta\overrightarrow{IB}
+        =
+        \overrightarrow{0}
+        }
+        \]
+    </div>
+
+</div>
+
+
+<div class="box">
+
+    <div class="box-title">Forme pratique</div>
+
+    <p>
+        Pour le barycentre de
+        \((A,\alpha)\) et \((B,\beta)\), on a :
+    </p>
+
+    <div class="formula">
+        \[
+        \boxed{
+        \overrightarrow{AI}
+        =
+        \frac{\beta}{\alpha+\beta}
+        \overrightarrow{AB}
+        }
+        \]
+    </div>
+
+</div><!-- =====================================================
+     ROLLOVER : DE LA DÉFINITION À LA FORME PRATIQUE
+     ===================================================== -->
+
+<div class="rollover-formule">
+
+    <span class="question-rollover" onclick="toggleRollover(this)">
+        💡 Voulez-vous savoir comment on passe
+        de la définition à la forme pratique ?
+    </span>
+
+    <h2>Application à \(I\)</h2>
+
+<p>
+    Ici :
+</p>
+
+<div class="formula">
+    \[
+    \alpha=\sqrt2,
+    \qquad
+    \beta=1.
+    \]
+</div>
+
+<p>
+    Donc :
+</p>
+
+<div class="formula">
+    \[
+    \overrightarrow{AI}
+    =
+    \frac{1}{\sqrt2+1}
+    \overrightarrow{AB}.
+    \]
+</div>
+
+<p>
+    Par conséquent :
+</p>
+
+<div class="formula">
+    \[
+    AI
+    =
+    \frac{1}{\sqrt2+1}\,AB.
+    \]
+</div>
+
+
+<h2>Lien avec la question 1</h2>
+
+<p>
+    Le triangle \(ABC\) est rectangle en \(A\).
+    Pour l'angle \(B=\frac{\pi}{8}\), la définition de la tangente donne :
+</p>
+
+<div class="formula">
+    \[
+    \tan\left(\frac{\pi}{8}\right)
+    =
+    \frac{AC}{AB}.
+    \]
+</div>
+<!-- =====================================================
+     FORMULE DE LA TANGENTE
+     ===================================================== -->
+
+<p>
+    Le triangle \(ABC\) est rectangle en \(A\).
+    Pour l'angle \(B=\frac{\pi}{8}\), on a :
+</p>
+
+\[
+\boxed{
+\tan\left(\frac{\pi}{8}\right)=\frac{AC}{AB}
+}
+\]
+
+
+<!-- =====================================================
+     LIEN VERS LA DÉMONSTRATION
+     ===================================================== -->
+<!-- =====================================================
+     ROLLOVER — ORIGINE DE LA FORMULE
+     ===================================================== -->
+
+<div class="rollover-formule">
+
+    <span class="question-rollover" onclick="toggleRollover(this)">
+        💡 Voulez-vous savoir d'où vient cette formule ?
+    </span>
+
+    <div class="texte-rollover">
+
+        <p><strong>Petit rappel :</strong></p>
+
+        \[
+        \tan B=\frac{\sin B}{\cos B}
+        \]
+
+        \[
+        \sin B=\frac{AC}{BC},
+        \qquad
+        \cos B=\frac{AB}{BC}
+        \]
+
+        <p>Donc :</p>
+
+        \[
+        \tan B
+        =
+        \frac{\dfrac{AC}{BC}}
+             {\dfrac{AB}{BC}}
+        =
+        \frac{AC}{AB}
+        \]
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SUITE DE LA CORRECTION
+     ===================================================== -->
+
+<p>
+    Or, d'après la question 1 :
+</p>
+
+\[
+\boxed{
+\tan\left(\frac{\pi}{8}\right)
+=
+\frac{1}{1+\sqrt2}
+}
+\]
+
+<p>
+    Ainsi :
+</p>
+
+\[
+\frac{AC}{AB}
+=
+\frac{1}{1+\sqrt2}.
+\]
+
+\[
+\boxed{
+AC=\frac{AB}{1+\sqrt2}
+}
+\]
+<p>
+    Or, d'après la question 1 :
+</p>
+
+<div class="formula">
+    \[
+    \boxed{
+    \tan\left(\frac{\pi}{8}\right)
+    =
+    \frac{1}{1+\sqrt2}
+    }.
+    \]
+</div>
+
+<p>
+    Ainsi :
+</p>
+
+<div class="formula">
+    \[
+    \frac{AC}{AB}
+    =
+    \frac{1}{1+\sqrt2}.
+    \]
+</div>
+
+<p>
+    Donc :
+</p>
+
+<div class="formula">
+    \[
+    AC
+    =
+    \frac{1}{1+\sqrt2}\,AB.
+    \]
+</div>
+
+
+<h2>Comparaison</h2>
+
+<p>
+    Nous avons obtenu, d'une part :
+</p>
+
+<div class="formula">
+    \[
+    AI
+    =
+    \frac{1}{1+\sqrt2}\,AB
+    \]
+</div>
+
+<p>
+    et, d'autre part :
+</p>
+
+<div class="formula">
+    \[
+    AC
+    =
+    \frac{1}{1+\sqrt2}\,AB.
+    \]
+</div>
+
+<p>
+    Les deux longueurs sont donc égales :
+</p>
+
+<div class="result">
+    \[
+    \boxed{AI=AC}
+    \]
+</div>
+
+
+<div class="keep">
+
+    <strong>À retenir.</strong>
+
+    <p>
+        Le barycentre permet ici de calculer directement la position
+        de \(I\) sur \([AB]\).
+    </p>
+
+    <p>
+        La question 1 donne ensuite exactement le rapport nécessaire
+        pour comparer \(AI\) et \(AC\).
+    </p>
+
+    <div class="formula">
+        \[
+        \boxed{
+        AI=
+        \frac{AB}{1+\sqrt2}
+        =
+        AC
+        }
+        \]
+    </div>
+
+</div>
+
+<!-- =====================================================
+     2.b — EXISTENCE ET UNICITÉ DU DÉPLACEMENT
+     ===================================================== -->
+
+<h2>2.b — Déterminer le déplacement \(f\)</h2>
+
+<div class="box">
+
+    <div class="box-title">Énoncé</div>
+
+    <p>
+        Montrer qu'il existe un unique déplacement \(f\) tel que :
+    </p>
+
+    \[
+    \boxed{
+    f(C)=I
+    \qquad\text{et}\qquad
+    f(I)=B
+    }
+    \]
+
+</div>
+
+
+<h2>Prérequis</h2>
+
+<div class="box">
+
+    <div class="box-title">
+        Isométrie — p. 36
+    </div>
+
+    <p>
+        Une isométrie est une transformation du plan qui conserve
+        les distances.
+    </p>
+
+    \[
+    \boxed{MN=M'N'}
+    \]
+
+    <p>
+        lorsque \(M'\) et \(N'\) sont les images respectives
+        de \(M\) et \(N\).
+    </p>
+
+</div>
+
+
+<div class="box">
+
+    <div class="box-title">
+        Déplacement — p. 56
+    </div>
+
+    <p>
+        Un déplacement est une isométrie directe :
+        il conserve les distances et les angles orientés.
+    </p>
+
+</div>
+
+
+<!-- =====================================================
+     ROLLOVER : POURQUOI DEUX POINTS ?
+     ===================================================== -->
+
+<div class="rollover-formule">
+
+    <span class="question-rollover" onclick="toggleRollover(this)">
+        💡 Voulez-vous savoir pourquoi deux points suffisent
+        pour déterminer un déplacement ?
+    </span>
+
+    <div class="texte-rollover">
+
+        <h3>Pourquoi deux points ?</h3>
+
+        <p>
+            Le théorème d'existence et d'unicité des déplacements
+            affirme que si \(A\neq B\) et si
+            \(AB=CD\), alors il existe un unique déplacement
+            qui transforme :
+        </p>
+
+        \[
+        A\longmapsto C,
+        \qquad
+        B\longmapsto D.
+        \]
+
+        <p>
+            Dans notre problème, il faudra donc vérifier :
+        </p>
+
+        \[
+        \boxed{CI=IB}.
+        \]
+
+        <p>
+            Une fois cette égalité établie, le théorème permet
+            de conclure à l'existence et à l'unicité de \(f\).
+        </p>
+
+        <p class="note">
+            Référence : Déplacements — p. 57.
+        </p>
+
+    </div>
+
+</div>
+
+
+<h2>Vérifions la condition \(CI=IB\)</h2>
+
+<p>
+    Le déplacement recherché transforme :
+</p>
+
+\[
+C\longmapsto I,
+\qquad
+I\longmapsto B.
+\]
+
+<p>
+    Comme un déplacement conserve les distances, il faut avoir :
+</p>
+
+\[
+\boxed{CI=IB}.
+\]
+
+
+<h3>Calcul de \(CI\)</h3>
+
+<p>
+    D'après la question 2.a :
+</p>
+
+\[
+AI=AC.
+\]
+
+<p>
+    Le triangle \(AIC\) est rectangle en \(A\).
+    D'après le théorème de Pythagore :
+</p>
+
+\[
+CI^2=AI^2+AC^2.
+\]
+
+<p>
+    Comme \(AI=AC\) :
+</p>
+
+\[
+CI^2=2AC^2.
+\]
+
+<p>
+    Donc :
+</p>
+
+\[
+\boxed{CI=\sqrt2\,AC}.
+\]
+
+
+<h3>Calcul de \(IB\)</h3>
+
+<p>
+    Puisque \(I\in[AB]\) :
+</p>
+
+\[
+IB=AB-AI.
+\]
+
+<p>
+    Or \(AI=AC\), donc :
+</p>
+
+\[
+IB=AB-AC.
+\]
+
+<p>
+    D'après la question 1 :
+</p>
+
+\[
+\tan\left(\frac{\pi}{8}\right)
+=
+\frac{1}{1+\sqrt2}.
+\]
+
+<p>
+    Dans le triangle rectangle \(ABC\) :
+</p>
+
+\[
+\tan\left(\frac{\pi}{8}\right)
+=
+\frac{AC}{AB}.
+\]
+
+<p>
+    Ainsi :
+</p>
+
+\[
+AC=\frac{AB}{1+\sqrt2}.
+\]
+
+<p>
+    Par conséquent :
+</p>
+
+\[
+\begin{aligned}
+IB
+&=AB-\frac{AB}{1+\sqrt2}\\[4pt]
+&=AB\left(1-\frac{1}{1+\sqrt2}\right)\\[4pt]
+&=AB\frac{\sqrt2}{1+\sqrt2}.
+\end{aligned}
+\]
+
+<p>
+    Or :
+</p>
+
+\[
+AC=\frac{AB}{1+\sqrt2}.
+\]
+
+<p>
+    Donc :
+</p>
+
+\[
+\boxed{IB=\sqrt2\,AC}.
+\]
+
+
+<h2>Comparaison</h2>
+
+<p>
+    Nous avons obtenu :
+</p>
+
+\[
+CI=\sqrt2\,AC
+\]
+
+<p>
+    et
+</p>
+
+\[
+IB=\sqrt2\,AC.
+\]
+
+<p>
+    Ainsi :
+</p>
+
+<div class="result">
+
+    \[
+    \boxed{CI=IB}
+    \]
+
+</div>
+
+
+<h2>Conclusion</h2>
+
+<p>
+    Les points \(C\) et \(I\) sont distincts et :
+</p>
+
+\[
+CI=IB.
+\]
+
+<p>
+    D'après le théorème d'existence et d'unicité des déplacements
+    (p. 57), il existe un unique déplacement \(f\) tel que :
+</p>
+
+\[
+\boxed{
+f(C)=I
+\qquad\text{et}\qquad
+f(I)=B
+}
+\]
+
+<div class="result">
+
+    \[
+    \boxed{
+    \exists!\,f
+    \text{ déplacement tel que }
+    f(C)=I,\;f(I)=B
+    }
+    \]
+
+</div>
+
+<!-- =====================================================
+     2.c — NATURE DU DÉPLACEMENT
+     ===================================================== -->
+
+<h2>2.c — Montrons que \(f\) est une rotation</h2>
+
+<div class="box">
+
+    <div class="box-title">Énoncé</div>
+
+    <p>
+        Montrer que \(f\) est une rotation, déterminer son angle
+        et construire son centre \(\omega\).
+    </p>
+
+</div>
+
+
+<h2>Prérequis — Angle d'un déplacement</h2>
+
+<div class="box">
+
+    <div class="box-title">
+        Déplacement — p. 56
+    </div>
+
+    <p>
+        Un déplacement conserve les distances et les angles orientés.
+        L'angle orienté associé au déplacement est constant :
+    </p>
+
+    \[
+    \boxed{
+    \left(
+    \overrightarrow{MM'};
+    \overrightarrow{NN'}
+    \right)
+    \equiv \theta
+    \pmod{2\pi}
+    }
+    \]
+
+    <p>
+        lorsque \(M'=f(M)\) et \(N'=f(N)\).
+    </p>
+
+</div>
+
+
+<!-- =====================================================
+     ROLLOVER — POURQUOI CELA PERMET DE DÉTERMINER
+     LA NATURE DU DÉPLACEMENT ?
+     ===================================================== -->
+
+<div class="rollover-formule">
+
+    <span class="question-rollover" onclick="toggleRollover(this)">
+        💡 Voulez-vous savoir comment reconnaître une rotation ?
+    </span>
+
+    <div class="texte-rollover">
+
+        <h3>Déplacement et rotation</h3>
+
+        <p>
+            Un déplacement est soit une translation, soit une rotation
+            non triviale.
+        </p>
+
+        \[
+        \boxed{
+        \theta\equiv0\pmod{2\pi}
+        }
+        \]
+
+        <p>
+            correspond au cas d'une translation
+            (ou à l'identité lorsque les points restent fixes).
+        </p>
+
+        <p>
+            Si :
+        </p>
+
+        \[
+        \boxed{
+        \theta\not\equiv0\pmod{2\pi}
+        }
+        \]
+
+        <p>
+            alors le déplacement est une
+            <strong>rotation</strong>.
+        </p>
+
+        <p class="note">
+            Classification des déplacements — p. 57.
+        </p>
+
+    </div>
+
+</div>
+
+
+<h2>Calcul de l'angle de \(f\)</h2>
+
+<p>
+    Nous savons que :
+</p>
+
+\[
+f(C)=I
+\qquad\text{et}\qquad
+f(I)=B.
+\]
+
+<p>
+    Par définition de l'angle d'un déplacement :
+</p>
+
+\[
+\boxed{
+\left(
+\overrightarrow{CI};
+\overrightarrow{IB}
+\right)
+\equiv
+\theta
+\pmod{2\pi}
+}
+\]
+
+<p>
+    Il faut donc déterminer l'angle orienté
+    \(\left(\overrightarrow{CI};\overrightarrow{IB}\right)\).
+</p>
+
+
+
+<!-- ========================= -->
+<!-- 2.c — ROTATION -->
+<!-- ========================= -->
+
+<div class="titre-partie">2.c — Montrons que f est une rotation</div>
+
+<div class="rappel">
+    <b>Rappel nécessaire :</b><br>
+    Une isométrie conserve les distances.
+    Un déplacement est une isométrie directe.
+</div>
+
+<div class="rollover-formule">
+    <span class="question-rollover" onclick="toggleRollover(this)">
+        💡 Comment reconnaître un déplacement ?
+    </span>
+
+    <div class="texte-rollover">
+
+        Un déplacement conserve les distances et les angles orientés.
+
+        <p>
+        Si \(f\) est un déplacement et si
+        \(A\neq B\), alors :
+        \[
+        AB=f(A)f(B).
+        \]
+        </p>
+
+        <p>
+        Un déplacement est :
+        \[
+        \boxed{\text{une translation ou une rotation}}
+        \]
+        </p>
+
+        <p>
+        Pour savoir lequel, on étudie l'angle :
+        \[
+        \left(\overrightarrow{AB};
+        \overrightarrow{f(A)f(B)}\right).
+        \]
+        </p>
+
+    </div>
+</div>
+
+<p>
+On sait que :
+\[
+f(C)=I,\qquad f(I)=B.
+\]
+</p>
+
+<p>
+L'angle du déplacement \(f\) est donc :
+\[
+\boxed{
+\theta=
+\left(\overrightarrow{CI};
+\overrightarrow{IB}\right)
+}.
+\]
+</p>
+
+
+<!-- ===== Étude de l'angle ===== -->
+
+<div class="rollover-formule">
+    <span class="question-rollover" onclick="toggleRollover(this)">
+        💡 Comment déterminer cet angle ?
+    </span>
+
+    <div class="texte-rollover">
+
+        D'après 2.a :
+        \[
+        AI=AC.
+        \]
+
+        <p>
+        De plus, \(ABC\) est rectangle en \(A\), donc :
+        \[
+        AI\perp AC.
+        \]
+        </p>
+
+        <p>
+        Ainsi, le triangle \(AIC\) est
+        <b>rectangle isocèle en \(A\)</b>.
+        </p>
+
+        <p>
+        Ses deux angles aigus valent donc :
+        \[
+        \boxed{\frac{\pi}{4}}.
+        \]
+        </p>
+
+    </div>
+</div>
+
+<p>
+Comme \(AI=AC\) et \(AI\perp AC\), le triangle \(AIC\) est
+rectangle isocèle en \(A\).
+</p>
+
+<p>
+Ainsi :
+\[
+\boxed{
+\left(\overrightarrow{CI};
+\overrightarrow{IA}\right)
+\equiv \frac{\pi}{4}
+\ [2\pi]
+}
+\]
+</p>
+<div class="rollover-formule">
+    <span class="question-rollover" onclick="toggleRollover(this)">
+        💡 Rappel — que se passe-t-il pour un angle orienté avec un vecteur opposé ?
+    </span>
+
+    <div class="texte-rollover">
+
+        <div class="mini-titre">Rappel de cours</div>
+
+        <p>
+            Deux vecteurs opposés ont des directions opposées :
+            \[
+            \vec v=-\vec u.
+            \]
+        </p>
+
+        <p>
+            Passer de \(\vec u\) à \(-\vec u\) revient à effectuer
+            une rotation d'un angle \(\pi\).
+        </p>
+
+        <p>
+            Ainsi :
+            \[
+            \boxed{
+            (\vec a;-\vec b)
+            \equiv
+            (\vec a;\vec b)+\pi
+            \ [2\pi]
+            }
+            \]
+        </p>
+
+        <p>
+            De même :
+            \[
+            \boxed{
+            (\vec a;-\vec b)
+            \equiv
+            (\vec a;\vec b)-\pi
+            \ [2\pi]
+            }
+            \]
+            puisque \(+\pi\equiv-\pi\ [2\pi]\).
+        </p>
+
+        <p>
+            <b>À retenir :</b>
+            remplacer un vecteur par son opposé ajoute
+            \(\pi\) à l'angle orienté.
+        </p>
+
+    </div>
+</div>
+<p>
+Or \(I\in[AB]\), donc les vecteurs
+\(\overrightarrow{IA}\) et \(\overrightarrow{IB}\)
+sont de sens opposés :
+\[
+\overrightarrow{IB}=-\lambda\overrightarrow{IA},
+\qquad \lambda>0.
+\]
+</p>
+
+<p>
+Par conséquent, puisque
+\(\overrightarrow{IB}=-\lambda\overrightarrow{IA}\),
+avec \(\lambda>0\) :
+</p>
+
+<div class="formula">
+\[
+\begin{aligned}
+\left(\overrightarrow{CI};
+\overrightarrow{IB}\right)
+&\equiv
+\frac{5\pi}{4}+\pi\\
+&\equiv
+\frac{9\pi}{4}\\
+&\equiv
+\boxed{\frac{\pi}{4}}\ [2\pi].
+\end{aligned}
+\]
+</div>
+
+<p>
+Ainsi, l'angle du déplacement \(f\) est :
+</p>
+
+<div class="result">
+\[
+\boxed{\theta=\frac{\pi}{4}}
+\]
+</div>
+</div>
+
+
+
+<script>
+function toggleEnonce(element) {
+    const bloc = element.closest(".enonce-rollover");
+    bloc.classList.toggle("enonce-ouvert");
+}
+
+function toggleRollover(element) {
+    const bloc = element.closest(".rollover-formule");
+    bloc.classList.toggle("ouvert");
+}
+</script>
+</body></html>
