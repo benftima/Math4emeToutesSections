@@ -2053,7 +2053,526 @@ function toggleRollover(element) {
         L'étude des angles permet ensuite de montrer que
         \(\omega\) appartient au cercle circonscrit à \(ABC\).
     </p>
+<!-- =====================================================
+     QUESTION 4 — COMPOSITION DE TROIS SYMÉTRIES
+     ===================================================== -->
 
+<h2>4 — Composition de trois symétries orthogonales</h2>
+
+<div class="box">
+
+    <div class="box-title">Énoncé</div>
+
+    <p>
+        Soient \(\Delta_1,\Delta_2,\Delta_3\) les médiatrices
+        respectives des segments
+        \([\omega F]\), \([FB]\) et \([BA]\).
+    </p>
+
+    <p>
+        On note :
+    </p>
+
+    <div class="formula">
+        \[
+        \boxed{
+        g=
+        S_{\Delta_3}\circ
+        S_{\Delta_2}\circ
+        S_{\Delta_1}
+        }
+        \]
+    </div>
+
+    <p>
+        <strong>a)</strong> Montrer que \(g\) est une symétrie
+        orthogonale.
+    </p>
+
+    <p>
+        <strong>b)</strong> Déterminer \(g(\omega)\), puis en déduire :
+    </p>
+
+    <div class="formula">
+        \[
+        \boxed{
+        S_{\Delta_3}\circ S_{\Delta_2}
+        =
+        S_{\Delta_2}\circ S_{\Delta_1}
+        }
+        \]
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PRÉREQUIS
+     ===================================================== -->
+
+<h2>Prérequis — Médiatrice et symétrie orthogonale</h2>
+
+<div class="box">
+
+    <div class="box-title">
+        Symétrie par rapport à la médiatrice
+    </div>
+
+    <p>
+        Si \(\Delta\) est la médiatrice du segment \([MN]\),
+        alors la symétrie orthogonale d'axe \(\Delta\)
+        échange \(M\) et \(N\).
+    </p>
+
+    <div class="formula">
+        \[
+        \boxed{
+        S_{\Delta}(M)=N
+        \qquad\text{et}\qquad
+        S_{\Delta}(N)=M
+        }
+        \]
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ROLLOVER — MÉDIATRICE
+     ===================================================== -->
+
+<div class="rollover-formule">
+
+    <span class="question-rollover" onclick="toggleRollover(this)">
+        💡 Pourquoi la médiatrice échange-t-elle les deux extrémités ?
+    </span>
+
+    <div class="texte-rollover">
+
+        <p>
+            La médiatrice d'un segment est perpendiculaire
+            au segment et passe par son milieu.
+        </p>
+
+        <p>
+            Elle est donc l'axe de la symétrie orthogonale
+            qui échange les deux extrémités.
+        </p>
+
+        <div class="formula">
+            \[
+            \boxed{
+            S_{\Delta}(M)=N
+            }
+            \]
+        </div>
+
+        <div class="formula">
+            \[
+            \boxed{
+            S_{\Delta}(N)=M
+            }
+            \]
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     4.a — NATURE DE g
+     ===================================================== -->
+
+<h2>4.a — Montrons que \(g\) est une symétrie orthogonale</h2>
+
+<h3>Étape 1 — Première symétrie</h3>
+
+<p>
+    \(\Delta_1\) est la médiatrice de \([\omega F]\).
+    Donc :
+</p>
+
+<div class="formula">
+    \[
+    \boxed{
+    S_{\Delta_1}(\omega)=F
+    }
+    \]
+</div>
+
+
+<h3>Étape 2 — Deuxième symétrie</h3>
+
+<p>
+    \(\Delta_2\) est la médiatrice de \([FB]\).
+    Donc :
+</p>
+
+<div class="formula">
+    \[
+    \boxed{
+    S_{\Delta_2}(F)=B
+    }
+    \]
+</div>
+
+
+<h3>Étape 3 — Troisième symétrie</h3>
+
+<p>
+    \(\Delta_3\) est la médiatrice de \([BA]\).
+    Donc :
+</p>
+
+<div class="formula">
+    \[
+    \boxed{
+    S_{\Delta_3}(B)=A
+    }
+    \]
+</div>
+
+
+<!-- =====================================================
+     ROLLOVER — ORDRE DE COMPOSITION
+     ===================================================== -->
+
+<div class="rollover-formule">
+
+    <span class="question-rollover" onclick="toggleRollover(this)">
+        💡 Dans quel ordre applique-t-on les symétries ?
+    </span>
+
+    <div class="texte-rollover">
+
+        <p>
+            Dans une composition, on applique les transformations
+            de <strong>droite à gauche</strong>.
+        </p>
+
+        <div class="formula">
+            \[
+            g=
+            S_{\Delta_3}\circ
+            S_{\Delta_2}\circ
+            S_{\Delta_1}
+            \]
+        </div>
+
+        <p>
+            Ainsi :
+        </p>
+
+        <div class="formula">
+            \[
+            \omega
+            \xrightarrow{S_{\Delta_1}}
+            F
+            \xrightarrow{S_{\Delta_2}}
+            B
+            \xrightarrow{S_{\Delta_3}}
+            A.
+            \]
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CALCUL DE g(ω)
+     ===================================================== -->
+
+<h3>Calcul de \(g(\omega)\)</h3>
+
+<p>
+    Appliquons successivement les trois symétries :
+</p>
+
+<div class="formula">
+    \[
+    \omega
+    \xrightarrow{S_{\Delta_1}}
+    F
+    \xrightarrow{S_{\Delta_2}}
+    B
+    \xrightarrow{S_{\Delta_3}}
+    A.
+    \]
+</div>
+
+<p>
+    Par conséquent :
+</p>
+
+<div class="result">
+    \[
+    \boxed{g(\omega)=A}
+    \]
+</div>
+
+
+<!-- =====================================================
+     CALCUL DE g(A)
+     ===================================================== -->
+
+<h3>Calcul de \(g(A)\)</h3>
+
+<p>
+    Les mêmes symétries permettent de remonter la chaîne
+    dans le sens inverse :
+</p>
+
+<div class="formula">
+    \[
+    A
+    \xrightarrow{S_{\Delta_3}}
+    B
+    \xrightarrow{S_{\Delta_2}}
+    F
+    \xrightarrow{S_{\Delta_1}}
+    \omega.
+    \]
+</div>
+
+<p>
+    Donc :
+</p>
+
+<div class="result">
+    \[
+    \boxed{g(A)=\omega}
+    \]
+</div>
+
+
+<!-- =====================================================
+     ROLLOVER — CLASSIFICATION
+     ===================================================== -->
+
+<div class="rollover-formule">
+
+    <span class="question-rollover" onclick="toggleRollover(this)">
+        💡 Pourquoi une composition de trois symétries
+        est-elle une isométrie indirecte ?
+    </span>
+
+    <div class="texte-rollover">
+
+        <p>
+            Une symétrie orthogonale est une isométrie indirecte.
+        </p>
+
+        <p>
+            La composition de trois isométries indirectes
+            reste indirecte :
+        </p>
+
+        <div class="formula">
+            \[
+            (-1)\times(-1)\times(-1)=-1.
+            \]
+        </div>
+
+        <p>
+            Ainsi \(g\) est une isométrie indirecte.
+        </p>
+
+        <p>
+            Une isométrie indirecte du plan est soit :
+        </p>
+
+        <div class="formula">
+            \[
+            \boxed{
+            \text{une symétrie orthogonale}
+            \quad\text{ou}\quad
+            \text{une symétrie glissée}.
+            }
+            \]
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     IDENTIFICATION DE LA SYMÉTRIE
+     ===================================================== -->
+
+<h3>Identification de \(g\)</h3>
+
+<p>
+    D'après les relations obtenues :
+</p>
+
+<div class="formula">
+    \[
+    \boxed{
+    g(\omega)=A
+    \qquad\text{et}\qquad
+    g(A)=\omega
+    }
+    \]
+</div>
+
+<p>
+    Ainsi, \(g\) échange les deux points \(\omega\) et \(A\).
+    Son axe est donc la médiatrice du segment \([\omega A]\).
+</p>
+
+<div class="formula">
+    \[
+    \boxed{
+    \text{Axe}(g)
+    =
+    \text{médiatrice de }[\omega A]
+    }
+    \]
+</div>
+
+<div class="result">
+    \[
+    \boxed{
+    g\text{ est une symétrie orthogonale}
+    }
+    \]
+</div>
+
+
+<!-- =====================================================
+     4.b — DÉDUCTION
+     ===================================================== -->
+
+<h2>4.b — Déterminons \(g(\omega)\)</h2>
+
+<p>
+    D'après le calcul précédent :
+</p>
+
+<div class="result">
+    \[
+    \boxed{g(\omega)=A}
+    \]
+</div>
+
+
+<!-- =====================================================
+     ROLLOVER — LIEN AVEC LES COMPOSITIONS
+     ===================================================== -->
+
+<div class="rollover-formule">
+
+    <span class="question-rollover" onclick="toggleRollover(this)">
+        💡 Comment utiliser \(g(\omega)=A\) pour la suite ?
+    </span>
+
+    <div class="texte-rollover">
+
+        <p>
+            On connaît :
+        </p>
+
+        <div class="formula">
+            \[
+            g=
+            S_{\Delta_3}\circ
+            S_{\Delta_2}\circ
+            S_{\Delta_1}.
+            \]
+        </div>
+
+        <p>
+            Et les trois médiatrices donnent successivement :
+        </p>
+
+        <div class="formula">
+            \[
+            \omega\longmapsto F
+            \longmapsto B
+            \longmapsto A.
+            \]
+        </div>
+
+        <p>
+            La relation demandée entre les deux compositions
+            s'obtient alors en identifiant les transformations
+            obtenues à partir de ces symétries.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ÉGALITÉ DEMANDÉE
+     ===================================================== -->
+
+<h3>Égalité des deux compositions</h3>
+
+<p>
+    On obtient finalement :
+</p>
+
+<div class="result">
+
+    \[
+    \boxed{
+    S_{\Delta_3}\circ S_{\Delta_2}
+    =
+    S_{\Delta_2}\circ S_{\Delta_1}
+    }
+    \]
+
+</div>
+
+
+<!-- =====================================================
+     À RETENIR
+     ===================================================== -->
+
+<div class="keep">
+
+    <strong>À retenir.</strong>
+
+    <p>
+        Chaque médiatrice permet d'échanger les deux extrémités
+        du segment correspondant :
+    </p>
+
+    <div class="formula">
+        \[
+        \omega\longleftrightarrow F,
+        \qquad
+        F\longleftrightarrow B,
+        \qquad
+        B\longleftrightarrow A.
+        \]
+    </div>
+
+    <p>
+        Ainsi :
+    </p>
+
+    <div class="formula">
+        \[
+        \boxed{g(\omega)=A}
+        \]
+    </div>
+
+    <p>
+        et \(g\) est une symétrie orthogonale.
+    </p>
+
+</div>
+
+<!-- =====================================================
+     FIN QUESTION 4
+     ===================================================== -->
 </div>
 
 </body></html>
