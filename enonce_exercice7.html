@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercice n°7 — S. 2008</title>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    displayMath: [['\\[','\\]']]
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    padding:20px;
+    background:#e8e8e8;
+    color:#222;
+    font-family:"Times New Roman",serif;
+    line-height:1.45;
+}
+
+.page{
+    width:210mm;
+    min-height:297mm;
+    margin:auto;
+    padding:13mm 16mm;
+    background:#fff;
+    box-shadow:0 2px 10px #aaa;
+}
+
+.titre{
+    text-align:center;
+    font-size:23px;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+.ligne{
+    border-top:1px solid #777;
+    margin:8px 0 14px;
+}
+
+p{
+    margin:7px 0;
+    font-size:16px;
+}
+
+.question{
+    margin-top:12px;
+}
+
+.formula{
+    text-align:center;
+    margin:8px 0;
+}
+
+.section{
+    margin-top:13px;
+}
+
+.section-title{
+    font-weight:bold;
+}
+
+@media(max-width:700px){
+    body{padding:8px}
+    .page{
+        width:100%;
+        min-height:auto;
+        padding:20px 16px;
+        box-shadow:none;
+    }
+    .titre{font-size:21px}
+    p{font-size:15px}
+    mjx-container{
+        max-width:100%;
+        overflow-x:auto;
+        overflow-y:hidden;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<div class="titre">Exercice n°7 — S. 2008</div>
+<div class="ligne"></div>
+
+<p>Le plan est orienté dans le sens direct.</p>
+
+<p>
+\(ABC\) est un triangle rectangle en \(A\) tel que :
+</p>
+
+<div class="formula">
+\[
+\left(
+\overrightarrow{BC};
+\overrightarrow{BA}
+\right)
+\equiv
+\frac{\pi}{8}\ [2\pi].
+\]
+</div>
+
+<p>
+\(O\) est le milieu de \([BC]\) et \(I\) est le barycentre
+des points pondérés \((A,\sqrt2)\) et \((B,1)\).
+</p>
+
+<div class="section">
+<p class="question">
+<strong>1.</strong> Montrer que :
+</p>
+
+<div class="formula">
+\[
+\boxed{
+\tan\left(\frac{\pi}{8}\right)
+=
+\frac{1}{1+\sqrt2}
+}
+\]
+</div>
+</div>
+
+<div class="section">
+<p class="question">
+<strong>2.</strong>
+</p>
+
+<p>
+<strong>a)</strong> Montrer que \(AI=AC\).
+</p>
+
+<p>
+<strong>b)</strong> Montrer qu'il existe un unique déplacement \(f\) tel que :
+</p>
+
+<div class="formula">
+\[
+f(C)=I,\qquad f(I)=B.
+\]
+</div>
+
+<p>
+<strong>c)</strong> Montrer que \(f\) est une rotation,
+donner son angle et construire son centre \(\omega\).
+</p>
+
+<p>
+<strong>d)</strong> Montrer que \(\omega\) appartient au cercle circonscrit
+\((\zeta)\) au triangle \(ABC\) et que :
+</p>
+
+<div class="formula">
+\[
+\left(
+\overrightarrow{B\omega};
+\overrightarrow{BA}
+\right)
+\equiv
+\frac{3\pi}{8}\ [2\pi].
+\]
+</div>
+</div>
+
+<div class="section">
+<p>
+<strong>3.</strong> La parallèle à \((AC)\) passant par \(\omega\)
+coupe le cercle \((\zeta)\) une seconde fois en \(F\).
+</p>
+
+<p>
+<strong>a)</strong> Déterminer l'image de la droite \((AC)\) par \(f\),
+en déduire que \(f(A)=F\).
+</p>
+
+<p>
+<strong>b)</strong> Montrer que les points \(C\), \(I\) et \(F\) sont alignés.
+</p>
+</div>
+
+<div class="section">
+<p>
+<strong>4.</strong> Soient \(\Delta_1,\Delta_2\) et \(\Delta_3\)
+les médiatrices respectives des segments
+\([\omega F]\), \([FB]\) et \([BA]\).
+</p>
+
+<p>On note :</p>
+
+<div class="formula">
+\[
+g=
+S_{\Delta_3}\circ
+S_{\Delta_2}\circ
+S_{\Delta_1}.
+\]
+</div>
+
+<p>
+<strong>a)</strong> Montrer que \(g\) est une symétrie orthogonale.
+</p>
+
+<p>
+<strong>b)</strong> Déterminer \(g(\omega)\), en déduire que :
+</p>
+
+<div class="formula">
+\[
+S_{\Delta_3}\circ S_{\Delta_2}
+=
+S_{\Delta_2}\circ S_{\Delta_1}.
+\]
+</div>
+</div>
+
+<div class="section">
+<p>
+<strong>5.</strong> Déterminer la nature et les éléments caractéristiques
+de chacune des transformations suivantes :
+</p>
+
+<div class="formula">
+\[
+\varphi=
+S_{(CF)}
+\circ
+S_{\Delta_3}
+\circ
+S_{\Delta_2}
+\circ
+S_{(AB)}
+\]
+</div>
+
+<p style="text-align:center;">et</p>
+
+<div class="formula">
+\[
+\psi=
+t_{\overrightarrow{BC}}
+\circ
+S_{\Delta_3}.
+\]
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
