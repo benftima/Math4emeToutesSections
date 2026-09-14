@@ -37,675 +37,425 @@ src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
 ===================================================== -->
 
 <style>
-
-* {
-    box-sizing: border-box;
+:root{
+  --blue:#159dcc;
+  --blue-light:#eaf5f9;
+  --blue-pale:#cfeaf5;
+  --ink:#222;
+  --muted:#666;
+  --paper:#fff;
+  --soft:#f7f7f2;
+  --line:#999;
+  --red:#d00000;
 }
 
-body {
-    margin: 0;
-    padding: 20px;
+*{box-sizing:border-box}
 
-    background: #e8e8e3;
-
-    color: #222;
-
-    font-family: "Times New Roman", Georgia, serif;
-
-    line-height: 1.5;
+html{
+  scroll-behavior:smooth;
 }
 
-
-/* =====================================================
-   PAGE A4
-===================================================== */
-
-.page {
-
-    width: 210mm;
-    min-height: 297mm;
-
-    margin: auto;
-
-    padding: 15mm 17mm;
-
-    background: white;
-
-    box-shadow:
-        0 2px 10px rgba(0,0,0,.15);
+body{
+  margin:0;
+  padding:0;
+  background:#e8e8e3;
+  color:var(--ink);
+  font-family:"Times New Roman",Georgia,serif;
+  line-height:1.55;
+  overflow-x:hidden;
 }
 
-
-/* =====================================================
-   EN-TÊTE
-===================================================== */
-
-.header {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    border-top: 2px solid #444;
-
-    border-bottom: 1px solid #777;
-
-    padding: 6px 0;
-
-    margin-bottom: 20px;
-
-    font-size: 14px;
+.page{
+  width:min(100%, 1100px);
+  margin:0 auto;
+  padding:clamp(14px,3vw,38px);
+  background:var(--paper);
+  min-height:100vh;
 }
 
-.header-left {
-    font-weight: bold;
+/* Header */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  border-top:2px solid #444;
+  border-bottom:1px solid #777;
+  padding:7px 0;
+  margin-bottom:20px;
+  font-size:clamp(12px,1.8vw,14px);
+}
+.header-left{font-weight:bold}
+.header-right{font-style:italic;text-align:right}
+
+/* Titles */
+h1{
+  text-align:center;
+  font-size:clamp(21px,4vw,30px);
+  line-height:1.2;
+  margin:16px 0 24px;
+}
+h2{
+  font-size:clamp(18px,3vw,23px);
+  line-height:1.25;
+  margin:30px 0 14px;
+  padding-bottom:6px;
+  border-bottom:1px solid #888;
+}
+h3{font-size:clamp(16px,2.5vw,19px)}
+
+/* Intro */
+.introduction{
+  padding:14px clamp(12px,2vw,18px);
+  margin-bottom:20px;
+  background:var(--soft);
+  border:1px solid var(--line);
+  border-left:4px solid #666;
 }
 
-.header-right {
-    font-style: italic;
+/* Function */
+.fonction{
+  text-align:center;
+  margin:20px 0;
+  padding:12px;
+  background:#fafaf6;
+  border-top:1px solid #777;
+  border-bottom:1px solid #777;
+  font-size:clamp(16px,2.5vw,20px);
+  overflow-x:auto;
 }
 
+/* Book-style statement */
+.enonce-livre{
+  margin:0 0 28px;
+  border-top:4px solid #22a9d6;
+  border-bottom:1px solid #22a9d6;
+  background:#fff;
+}
+.enonce-bandeau{
+  text-align:center;
+  margin:-1px auto 18px;
+  width:min(75%,430px);
+  padding:8px 15px;
+  background:var(--blue);
+  color:white;
+  border-radius:0 0 18px 18px;
+  font-size:clamp(17px,3vw,21px);
+  font-weight:bold;
+}
+.enonce-reference{
+  text-align:right;
+  color:#555;
+  font-size:clamp(12px,1.8vw,13px);
+  font-style:italic;
+  margin:0 0 12px;
+}
+.enonce-corps{
+  padding:5px clamp(8px,2vw,16px) 16px;
+  font-size:clamp(15px,2vw,17px);
+}
+.enonce-numero{
+  display:inline-block;
+  color:#118fbd;
+  border:2px solid #22a9d6;
+  padding:1px 7px;
+  margin-right:7px;
+  font-weight:bold;
+  font-size:clamp(16px,2.5vw,19px);
+}
+.enonce-titre{font-weight:bold;font-size:clamp(17px,2.5vw,19px)}
+.enonce-question{margin:17px 0 8px}
+.enonce-sous-question{margin:8px 0 8px clamp(12px,4vw,28px)}
 
-/* =====================================================
-   TITRE PRINCIPAL
-===================================================== */
-
-h1 {
-
-    text-align: center;
-
-    font-size: 24px;
-
-    margin: 16px 0 22px;
+/* Activities */
+.activite{
+  margin:20px 0;
+  padding:clamp(11px,2.2vw,18px);
+  background:#fafaf6;
+  border:1px solid #999;
+}
+.activite-titre{
+  font-size:clamp(16px,2.5vw,19px);
+  font-weight:bold;
+  padding-bottom:6px;
+  margin-bottom:14px;
+  border-bottom:1px solid #aaa;
 }
 
-h2 {
-
-    font-size: 19px;
-
-    margin-top: 30px;
-
-    padding-bottom: 5px;
-
-    border-bottom: 1px solid #888;
+/* Questions */
+.question{
+  margin:16px 0;
+  padding-left:2px;
+}
+.numero{
+  display:inline-block;
+  min-width:25px;
+  font-weight:bold;
 }
 
-h3 {
+/* Helpers */
+.aide{
+  margin:15px 0;
+  border-top:1px dashed #999;
+  border-bottom:1px dashed #999;
+  padding:10px 5px;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.aide-question{
+  font-weight:bold;
+  font-size:clamp(13px,2vw,15px);
+  color:#555;
+}
+.aide-contenu{
+  display:none;
+  margin-top:10px;
+  padding:11px clamp(10px,2vw,15px);
+  background:#f1f1ec;
+  border-left:3px solid #777;
+  overflow-x:auto;
+}
+.aide.ouverte .aide-contenu{display:block}
 
-    font-size: 17px;
-
-    margin-top: 20px;
+/* Theorem */
+.theoreme-rollover{
+  margin:18px 0;
+  position:relative;
+}
+.theoreme-question{
+  display:block;
+  padding:10px;
+  border-top:1px solid #888;
+  border-bottom:1px solid #888;
+  color:#333;
+  font-weight:bold;
+  font-style:italic;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.theoreme-cache{
+  display:none;
+  margin-top:7px;
+  padding:13px clamp(10px,2vw,16px);
+  background:var(--blue-light);
+  border-left:4px solid #22a9d6;
+  border-right:1px solid #b5dce9;
+  overflow-x:auto;
+}
+.theoreme-rollover:hover .theoreme-cache,
+.theoreme-rollover.ouvert .theoreme-cache{
+  display:block;
+}
+.theoreme-titre{
+  font-weight:bold;
+  font-size:clamp(16px,2.4vw,18px);
+  margin-bottom:8px;
+}
+.theoreme-texte{font-size:clamp(14px,2vw,16px)}
+.theoreme-page{
+  margin-top:12px;
+  padding-top:7px;
+  border-top:1px solid #aaa;
+  text-align:right;
+  font-size:12px;
+  font-style:italic;
+  color:#555;
 }
 
+/* Tables */
+.table-theoreme{
+  width:100%;
+  border-collapse:collapse;
+  margin:12px 0;
+  text-align:center;
+  font-size:clamp(12px,1.8vw,14px);
+  table-layout:fixed;
+}
+.table-theoreme th{
+  background:#55bde5;
+  color:#111;
+  border:1px solid white;
+  padding:8px 5px;
+  font-weight:bold;
+}
+.table-theoreme td{
+  background:var(--blue-pale);
+  border:1px solid white;
+  padding:9px 5px;
+  vertical-align:middle;
+  overflow-wrap:anywhere;
+}
+.table-theoreme .cas-utilise{
+  color:var(--red);
+  font-weight:bold;
+  background:#d9edf7;
+  border:2px solid var(--red);
+}
+.legende-cas{
+  margin-top:10px;
+  padding:7px 10px;
+  background:#f8f8f8;
+  border-top:1px solid #aaa;
+  font-size:clamp(13px,1.9vw,14px);
+}
+.rouge{color:var(--red);font-weight:bold}
 
-/* =====================================================
-   INTRODUCTION
-===================================================== */
-
-.introduction {
-
-    padding: 12px 15px;
-
-    margin-bottom: 20px;
-
-    background: #f7f7f2;
-
-    border: 1px solid #999;
-
-    border-left: 4px solid #666;
+/* Application/result */
+.application{
+  margin-top:20px;
+  padding:12px clamp(10px,2vw,16px);
+  border-left:3px solid #777;
+  background:#fafafa;
+  overflow-x:auto;
+}
+.application-titre{
+  font-weight:bold;
+  font-size:clamp(15px,2.3vw,17px);
+  margin-bottom:8px;
+}
+.resultat{
+  margin:20px auto;
+  padding:11px clamp(12px,3vw,22px);
+  width:fit-content;
+  max-width:100%;
+  border-top:1px solid #333;
+  border-bottom:1px solid #333;
+  background:#fff;
+  text-align:center;
+  overflow-x:auto;
 }
 
-
-/* =====================================================
-   FONCTION
-===================================================== */
-
-.fonction {
-
-    text-align: center;
-
-    margin: 20px 0;
-
-    padding: 13px;
-
-    background: #fafaf6;
-
-    border-top: 1px solid #777;
-
-    border-bottom: 1px solid #777;
-
-    font-size: 18px;
+/* Synthesis */
+.synthese{
+  margin:28px 0;
+  padding:15px clamp(12px,2.5vw,20px);
+  background:#f3f3ee;
+  border:1px solid #777;
+  border-left:5px solid #444;
+  overflow-x:auto;
+}
+.synthese-titre{
+  font-size:clamp(17px,2.6vw,20px);
+  font-weight:bold;
+  margin-bottom:12px;
 }
 
-
-/* =====================================================
-   ÉNONCÉ — STYLE LIVRE
-===================================================== */
-
-.enonce-livre {
-
-    margin: 0 0 28px 0;
-
-    border-top: 4px solid #22a9d6;
-
-    border-bottom: 1px solid #22a9d6;
-
-    background: #ffffff;
+/* Variation table */
+.tableau{
+  width:min(100%,700px);
+  margin:15px auto;
+  border-collapse:collapse;
+  text-align:center;
+  font-size:clamp(13px,2vw,16px);
+}
+.tableau td{
+  border:1px solid #555;
+  padding:9px;
+  background:#fafafa;
 }
 
-.enonce-bandeau {
-
-    text-align: center;
-
-    margin: -1px auto 18px auto;
-
-    width: 75%;
-
-    padding: 8px 15px;
-
-    background: #159dcc;
-
-    color: white;
-
-    border-radius: 0 0 18px 18px;
-
-    font-size: 20px;
-
-    font-weight: bold;
-
-    letter-spacing: .3px;
+/* Next step */
+.etape-suivante{
+  margin-top:25px;
+  padding:15px clamp(12px,2.5vw,20px);
+  background:#f8f8f4;
+  border:1px dashed #777;
+  overflow-x:auto;
 }
 
-.enonce-reference {
-
-    text-align: right;
-
-    color: #555;
-
-    font-size: 13px;
-
-    font-style: italic;
-
-    margin-bottom: 12px;
+/* MathJax safety */
+mjx-container{
+  max-width:100%;
+}
+mjx-container[display="true"]{
+  max-width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding-bottom:2px;
 }
 
-.enonce-corps {
-
-    padding: 5px 12px 15px 12px;
-
-    font-size: 16px;
+/* Footer */
+.footer{
+  margin-top:35px;
+  padding-top:8px;
+  border-top:1px solid #aaa;
+  text-align:center;
+  font-size:12px;
+  color:#666;
 }
 
-.enonce-numero {
-
-    display: inline-block;
-
-    color: #118fbd;
-
-    border: 2px solid #22a9d6;
-
-    padding: 2px 7px;
-
-    margin-right: 8px;
-
-    font-weight: bold;
-
-    font-size: 18px;
+/* Tablet/mobile */
+@media (max-width:700px){
+  body{background:#fff}
+  .page{
+    width:100%;
+    padding:12px;
+  }
+  .header{
+    align-items:flex-start;
+    font-size:12px;
+  }
+  .enonce-bandeau{width:90%}
+  .table-theoreme{
+    min-width:560px;
+  }
+  .theoreme-cache{
+    overflow-x:auto;
+  }
 }
 
-.enonce-titre {
-
-    font-weight: bold;
-
-    font-size: 18px;
+/* Small phones */
+@media (max-width:430px){
+  .page{padding:9px}
+  h1{font-size:21px}
+  h2{font-size:18px}
+  .header{
+    flex-direction:column;
+    gap:3px;
+  }
+  .header-right{
+    text-align:left;
+  }
+  .enonce-corps,
+  .activite,
+  .introduction,
+  .synthese,
+  .etape-suivante{
+    font-size:15px;
+  }
+  .tableau{
+    font-size:12px;
+  }
+  .tableau td{
+    padding:7px 4px;
+  }
 }
 
-.enonce-question {
-
-    margin-top: 17px;
-
-    margin-bottom: 8px;
+/* Print = A4 */
+@media print{
+  @page{
+    size:A4;
+    margin:14mm 15mm;
+  }
+  body{
+    background:white;
+    padding:0;
+  }
+  .page{
+    width:100%;
+    max-width:none;
+    min-height:auto;
+    padding:0;
+    box-shadow:none;
+  }
+  .aide-contenu,
+  .theoreme-cache{
+    display:block !important;
+  }
+  .theoreme-rollover:hover .theoreme-cache{
+    display:block !important;
+  }
 }
-
-.enonce-sous-question {
-
-    margin: 8px 0 8px 22px;
-}
-
-
-/* =====================================================
-   ACTIVITÉS
-===================================================== */
-
-.activite {
-
-    margin: 20px 0;
-
-    padding: 13px 16px;
-
-    background: #fafaf6;
-
-    border: 1px solid #999;
-}
-
-.activite-titre {
-
-    font-size: 17px;
-
-    font-weight: bold;
-
-    padding-bottom: 6px;
-
-    margin-bottom: 14px;
-
-    border-bottom: 1px solid #aaa;
-}
-
-
-/* =====================================================
-   QUESTIONS
-===================================================== */
-
-.question {
-
-    margin: 16px 0;
-
-    padding-left: 4px;
-}
-
-.numero {
-
-    display: inline-block;
-
-    min-width: 25px;
-
-    font-weight: bold;
-}
-
-
-/* =====================================================
-   AIDES
-===================================================== */
-
-.aide {
-
-    margin: 15px 0;
-
-    border-top: 1px dashed #999;
-
-    border-bottom: 1px dashed #999;
-
-    padding: 8px 5px;
-
-    cursor: pointer;
-}
-
-.aide-question {
-
-    font-weight: bold;
-
-    font-size: 14px;
-
-    color: #555;
-}
-
-.aide-contenu {
-
-    display: none;
-
-    margin-top: 10px;
-
-    padding: 10px 14px;
-
-    background: #f1f1ec;
-
-    border-left: 3px solid #777;
-}
-
-.aide.ouverte .aide-contenu {
-
-    display: block;
-}
-
-
-/* =====================================================
-   THÉORÈMES EN ROLLOVER
-===================================================== */
-
-.theoreme-rollover {
-
-    margin: 18px 0;
-
-    position: relative;
-}
-
-.theoreme-question {
-
-    display: block;
-
-    padding: 8px 10px;
-
-    border-top: 1px solid #888;
-
-    border-bottom: 1px solid #888;
-
-    color: #333;
-
-    font-weight: bold;
-
-    font-style: italic;
-
-    cursor: help;
-}
-
-.theoreme-cache {
-
-    display: none;
-
-    margin-top: 7px;
-
-    padding: 13px 15px;
-
-    background: #eaf5f9;
-
-    border-left: 4px solid #22a9d6;
-
-    border-right: 1px solid #b5dce9;
-}
-
-.theoreme-rollover:hover .theoreme-cache {
-
-    display: block;
-}
-
-.theoreme-titre {
-
-    font-weight: bold;
-
-    font-size: 17px;
-
-    margin-bottom: 8px;
-}
-
-.theoreme-texte {
-
-    font-size: 15px;
-}
-
-.theoreme-page {
-
-    margin-top: 12px;
-
-    padding-top: 7px;
-
-    border-top: 1px solid #aaa;
-
-    text-align: right;
-
-    font-size: 13px;
-
-    font-style: italic;
-
-    color: #555;
-}
-
-
-/* =====================================================
-   TABLEAU DE THÉORÈME
-===================================================== */
-
-.table-theoreme {
-
-    width: 100%;
-
-    border-collapse: collapse;
-
-    margin: 12px 0;
-
-    text-align: center;
-
-    font-size: 14px;
-}
-
-.table-theoreme th {
-
-    background: #55bde5;
-
-    color: #111;
-
-    border: 1px solid white;
-
-    padding: 8px 5px;
-
-    font-weight: bold;
-}
-
-.table-theoreme td {
-
-    background: #cfeaf5;
-
-    border: 1px solid white;
-
-    padding: 9px 5px;
-
-    vertical-align: middle;
-}
-
-
-/* CAS UTILISÉ */
-
-.table-theoreme .cas-utilise {
-
-    color: #d00000;
-
-    font-weight: bold;
-
-    background: #d9edf7;
-
-    border: 2px solid #d00000;
-}
-
-
-/* =====================================================
-   LÉGENDE
-===================================================== */
-
-.legende-cas {
-
-    margin-top: 10px;
-
-    padding: 7px 10px;
-
-    background: #f8f8f8;
-
-    border-top: 1px solid #aaa;
-
-    font-size: 14px;
-}
-
-.rouge {
-
-    color: #d00000;
-
-    font-weight: bold;
-}
-
-
-/* =====================================================
-   APPLICATION
-===================================================== */
-
-.application {
-
-    margin-top: 20px;
-
-    padding: 12px 16px;
-
-    border-left: 3px solid #777;
-
-    background: #fafafa;
-}
-
-.application-titre {
-
-    font-weight: bold;
-
-    font-size: 16px;
-
-    margin-bottom: 8px;
-}
-
-
-/* =====================================================
-   RÉSULTAT
-===================================================== */
-
-.resultat {
-
-    margin: 20px auto;
-
-    padding: 12px 20px;
-
-    width: fit-content;
-
-    border-top: 1px solid #333;
-
-    border-bottom: 1px solid #333;
-
-    background: #fff;
-
-    text-align: center;
-}
-
-
-/* =====================================================
-   SYNTHÈSE
-===================================================== */
-
-.synthese {
-
-    margin: 28px 0;
-
-    padding: 15px 18px;
-
-    background: #f3f3ee;
-
-    border: 1px solid #777;
-
-    border-left: 5px solid #444;
-}
-
-.synthese-titre {
-
-    font-size: 18px;
-
-    font-weight: bold;
-
-    margin-bottom: 12px;
-}
-
-
-/* =====================================================
-   TABLEAU DE VARIATION
-===================================================== */
-
-.tableau {
-
-    width: 80%;
-
-    margin: 15px auto;
-
-    border-collapse: collapse;
-
-    text-align: center;
-}
-
-.tableau td {
-
-    border: 1px solid #555;
-
-    padding: 9px;
-
-    background: #fafafa;
-}
-
-
-/* =====================================================
-   PAGE SUIVANTE
-===================================================== */
-
-.etape-suivante {
-
-    margin-top: 25px;
-
-    padding: 15px 18px;
-
-    background: #f8f8f4;
-
-    border: 1px dashed #777;
-}
-
-
-/* =====================================================
-   PIED DE PAGE
-===================================================== */
-
-.footer {
-
-    margin-top: 35px;
-
-    padding-top: 8px;
-
-    border-top: 1px solid #aaa;
-
-    text-align: center;
-
-    font-size: 12px;
-
-    color: #666;
-}
-
-
-/* =====================================================
-   IMPRESSION
-===================================================== */
-
-@media print {
-
-    body {
-
-        background: white;
-
-        padding: 0;
-    }
-
-    .page {
-
-        width: 210mm;
-
-        min-height: 297mm;
-
-        margin: 0;
-
-        padding: 14mm 17mm;
-
-        box-shadow: none;
-    }
-
-    .aide-contenu {
-
-        display: block;
-    }
-
-    .theoreme-cache {
-
-        display: block;
-    }
-
-}
-
 </style>
 
 </head>
@@ -3706,10 +3456,20 @@ x\in[-1,1]
 <script>
 
 function ouvrirAide(element) {
-
     element.classList.toggle("ouverte");
-
 }
+
+/* Sur téléphone : toucher le titre du théorème
+   ouvre/ferme le rollover. Sur ordinateur, le survol
+   continue de fonctionner. */
+document.querySelectorAll(".theoreme-rollover").forEach(function(bloc){
+    const titre = bloc.querySelector(".theoreme-question");
+    if(titre){
+        titre.addEventListener("click", function(){
+            bloc.classList.toggle("ouvert");
+        });
+    }
+});
 
 </script>
 
