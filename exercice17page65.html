@@ -1,0 +1,3719 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Exercice 17 — Page 65 — Étude progressive d'une fonction</title>
+
+
+<!-- =====================================================
+     MATHJAX
+===================================================== -->
+
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+    },
+    svg: {
+        fontCache: 'global'
+    }
+};
+</script>
+
+<script async
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
+<!-- =====================================================
+     STYLE
+===================================================== -->
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+
+    background: #e8e8e3;
+
+    color: #222;
+
+    font-family: "Times New Roman", Georgia, serif;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   PAGE A4
+===================================================== */
+
+.page {
+
+    width: 210mm;
+    min-height: 297mm;
+
+    margin: auto;
+
+    padding: 15mm 17mm;
+
+    background: white;
+
+    box-shadow:
+        0 2px 10px rgba(0,0,0,.15);
+}
+
+
+/* =====================================================
+   EN-TÊTE
+===================================================== */
+
+.header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-top: 2px solid #444;
+
+    border-bottom: 1px solid #777;
+
+    padding: 6px 0;
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+}
+
+.header-left {
+    font-weight: bold;
+}
+
+.header-right {
+    font-style: italic;
+}
+
+
+/* =====================================================
+   TITRE PRINCIPAL
+===================================================== */
+
+h1 {
+
+    text-align: center;
+
+    font-size: 24px;
+
+    margin: 16px 0 22px;
+}
+
+h2 {
+
+    font-size: 19px;
+
+    margin-top: 30px;
+
+    padding-bottom: 5px;
+
+    border-bottom: 1px solid #888;
+}
+
+h3 {
+
+    font-size: 17px;
+
+    margin-top: 20px;
+}
+
+
+/* =====================================================
+   INTRODUCTION
+===================================================== */
+
+.introduction {
+
+    padding: 12px 15px;
+
+    margin-bottom: 20px;
+
+    background: #f7f7f2;
+
+    border: 1px solid #999;
+
+    border-left: 4px solid #666;
+}
+
+
+/* =====================================================
+   FONCTION
+===================================================== */
+
+.fonction {
+
+    text-align: center;
+
+    margin: 20px 0;
+
+    padding: 13px;
+
+    background: #fafaf6;
+
+    border-top: 1px solid #777;
+
+    border-bottom: 1px solid #777;
+
+    font-size: 18px;
+}
+
+
+/* =====================================================
+   ÉNONCÉ — STYLE LIVRE
+===================================================== */
+
+.enonce-livre {
+
+    margin: 0 0 28px 0;
+
+    border-top: 4px solid #22a9d6;
+
+    border-bottom: 1px solid #22a9d6;
+
+    background: #ffffff;
+}
+
+.enonce-bandeau {
+
+    text-align: center;
+
+    margin: -1px auto 18px auto;
+
+    width: 75%;
+
+    padding: 8px 15px;
+
+    background: #159dcc;
+
+    color: white;
+
+    border-radius: 0 0 18px 18px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    letter-spacing: .3px;
+}
+
+.enonce-reference {
+
+    text-align: right;
+
+    color: #555;
+
+    font-size: 13px;
+
+    font-style: italic;
+
+    margin-bottom: 12px;
+}
+
+.enonce-corps {
+
+    padding: 5px 12px 15px 12px;
+
+    font-size: 16px;
+}
+
+.enonce-numero {
+
+    display: inline-block;
+
+    color: #118fbd;
+
+    border: 2px solid #22a9d6;
+
+    padding: 2px 7px;
+
+    margin-right: 8px;
+
+    font-weight: bold;
+
+    font-size: 18px;
+}
+
+.enonce-titre {
+
+    font-weight: bold;
+
+    font-size: 18px;
+}
+
+.enonce-question {
+
+    margin-top: 17px;
+
+    margin-bottom: 8px;
+}
+
+.enonce-sous-question {
+
+    margin: 8px 0 8px 22px;
+}
+
+
+/* =====================================================
+   ACTIVITÉS
+===================================================== */
+
+.activite {
+
+    margin: 20px 0;
+
+    padding: 13px 16px;
+
+    background: #fafaf6;
+
+    border: 1px solid #999;
+}
+
+.activite-titre {
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    padding-bottom: 6px;
+
+    margin-bottom: 14px;
+
+    border-bottom: 1px solid #aaa;
+}
+
+
+/* =====================================================
+   QUESTIONS
+===================================================== */
+
+.question {
+
+    margin: 16px 0;
+
+    padding-left: 4px;
+}
+
+.numero {
+
+    display: inline-block;
+
+    min-width: 25px;
+
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   AIDES
+===================================================== */
+
+.aide {
+
+    margin: 15px 0;
+
+    border-top: 1px dashed #999;
+
+    border-bottom: 1px dashed #999;
+
+    padding: 8px 5px;
+
+    cursor: pointer;
+}
+
+.aide-question {
+
+    font-weight: bold;
+
+    font-size: 14px;
+
+    color: #555;
+}
+
+.aide-contenu {
+
+    display: none;
+
+    margin-top: 10px;
+
+    padding: 10px 14px;
+
+    background: #f1f1ec;
+
+    border-left: 3px solid #777;
+}
+
+.aide.ouverte .aide-contenu {
+
+    display: block;
+}
+
+
+/* =====================================================
+   THÉORÈMES EN ROLLOVER
+===================================================== */
+
+.theoreme-rollover {
+
+    margin: 18px 0;
+
+    position: relative;
+}
+
+.theoreme-question {
+
+    display: block;
+
+    padding: 8px 10px;
+
+    border-top: 1px solid #888;
+
+    border-bottom: 1px solid #888;
+
+    color: #333;
+
+    font-weight: bold;
+
+    font-style: italic;
+
+    cursor: help;
+}
+
+.theoreme-cache {
+
+    display: none;
+
+    margin-top: 7px;
+
+    padding: 13px 15px;
+
+    background: #eaf5f9;
+
+    border-left: 4px solid #22a9d6;
+
+    border-right: 1px solid #b5dce9;
+}
+
+.theoreme-rollover:hover .theoreme-cache {
+
+    display: block;
+}
+
+.theoreme-titre {
+
+    font-weight: bold;
+
+    font-size: 17px;
+
+    margin-bottom: 8px;
+}
+
+.theoreme-texte {
+
+    font-size: 15px;
+}
+
+.theoreme-page {
+
+    margin-top: 12px;
+
+    padding-top: 7px;
+
+    border-top: 1px solid #aaa;
+
+    text-align: right;
+
+    font-size: 13px;
+
+    font-style: italic;
+
+    color: #555;
+}
+
+
+/* =====================================================
+   TABLEAU DE THÉORÈME
+===================================================== */
+
+.table-theoreme {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin: 12px 0;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+.table-theoreme th {
+
+    background: #55bde5;
+
+    color: #111;
+
+    border: 1px solid white;
+
+    padding: 8px 5px;
+
+    font-weight: bold;
+}
+
+.table-theoreme td {
+
+    background: #cfeaf5;
+
+    border: 1px solid white;
+
+    padding: 9px 5px;
+
+    vertical-align: middle;
+}
+
+
+/* CAS UTILISÉ */
+
+.table-theoreme .cas-utilise {
+
+    color: #d00000;
+
+    font-weight: bold;
+
+    background: #d9edf7;
+
+    border: 2px solid #d00000;
+}
+
+
+/* =====================================================
+   LÉGENDE
+===================================================== */
+
+.legende-cas {
+
+    margin-top: 10px;
+
+    padding: 7px 10px;
+
+    background: #f8f8f8;
+
+    border-top: 1px solid #aaa;
+
+    font-size: 14px;
+}
+
+.rouge {
+
+    color: #d00000;
+
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   APPLICATION
+===================================================== */
+
+.application {
+
+    margin-top: 20px;
+
+    padding: 12px 16px;
+
+    border-left: 3px solid #777;
+
+    background: #fafafa;
+}
+
+.application-titre {
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    margin-bottom: 8px;
+}
+
+
+/* =====================================================
+   RÉSULTAT
+===================================================== */
+
+.resultat {
+
+    margin: 20px auto;
+
+    padding: 12px 20px;
+
+    width: fit-content;
+
+    border-top: 1px solid #333;
+
+    border-bottom: 1px solid #333;
+
+    background: #fff;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   SYNTHÈSE
+===================================================== */
+
+.synthese {
+
+    margin: 28px 0;
+
+    padding: 15px 18px;
+
+    background: #f3f3ee;
+
+    border: 1px solid #777;
+
+    border-left: 5px solid #444;
+}
+
+.synthese-titre {
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    margin-bottom: 12px;
+}
+
+
+/* =====================================================
+   TABLEAU DE VARIATION
+===================================================== */
+
+.tableau {
+
+    width: 80%;
+
+    margin: 15px auto;
+
+    border-collapse: collapse;
+
+    text-align: center;
+}
+
+.tableau td {
+
+    border: 1px solid #555;
+
+    padding: 9px;
+
+    background: #fafafa;
+}
+
+
+/* =====================================================
+   PAGE SUIVANTE
+===================================================== */
+
+.etape-suivante {
+
+    margin-top: 25px;
+
+    padding: 15px 18px;
+
+    background: #f8f8f4;
+
+    border: 1px dashed #777;
+}
+
+
+/* =====================================================
+   PIED DE PAGE
+===================================================== */
+
+.footer {
+
+    margin-top: 35px;
+
+    padding-top: 8px;
+
+    border-top: 1px solid #aaa;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    color: #666;
+}
+
+
+/* =====================================================
+   IMPRESSION
+===================================================== */
+
+@media print {
+
+    body {
+
+        background: white;
+
+        padding: 0;
+    }
+
+    .page {
+
+        width: 210mm;
+
+        min-height: 297mm;
+
+        margin: 0;
+
+        padding: 14mm 17mm;
+
+        box-shadow: none;
+    }
+
+    .aide-contenu {
+
+        display: block;
+    }
+
+    .theoreme-cache {
+
+        display: block;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+<!-- =====================================================
+     EN-TÊTE
+===================================================== -->
+
+<div class="header">
+
+    <div class="header-left">
+        Mathématiques
+    </div>
+
+    <div class="header-right">
+        Préparation progressive
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     TITRE
+===================================================== -->
+
+<h1>
+    Étude progressive d'une fonction
+</h1>
+
+
+<!-- =====================================================
+     ÉNONCÉ DE L'EXERCICE 17
+     PAGE 65
+===================================================== -->
+
+<div class="enonce-livre">
+
+    <div class="enonce-bandeau">
+        Exercices et problèmes
+    </div>
+
+    <div class="enonce-reference">
+        Exercice 17 — Bac Sciences Expérimentales — page 65
+    </div>
+
+    <div class="enonce-corps">
+
+        <p>
+            <span class="enonce-numero">17</span>
+
+            Soit \(f\) la fonction définie sur l'intervalle
+            \([-1,1]\) par
+        </p>
+
+        \[
+        \boxed{
+        f(x)=
+        \frac{x^2+1}{x^2+x+1}
+        }
+        \]
+
+        <div class="enonce-question">
+
+            <strong>1.</strong>
+            Montrer que \(f\) réalise une bijection de
+            \([-1,1]\) sur un intervalle que l'on précisera.
+
+        </div>
+
+
+        <div class="enonce-question">
+
+            <strong>2.</strong>
+            Soit \(g\) la fonction définie sur \([-1,1]\) par
+            \[
+            g(x)=f(x)-x.
+            \]
+
+        </div>
+
+
+        <div class="enonce-sous-question">
+
+            <strong>a.</strong>
+            Montrer que l'équation \(g(x)=0\) admet une unique
+            solution \(\alpha\) dans \(]-1,1[\).
+
+        </div>
+
+        <div class="enonce-sous-question">
+
+            <strong>b.</strong>
+            Vérifier que
+            \[
+            \alpha\in
+            \left]\frac23,1\right[.
+            \]
+
+        </div>
+
+        <div class="enonce-sous-question">
+
+            <strong>c.</strong>
+            En déduire que la droite
+            \(\Delta:y=x\)
+            coupe la courbe de \(f\) en un unique point.
+
+        </div>
+
+
+        <div class="enonce-question">
+
+            <strong>3.</strong>
+            La fonction \(f^{-1}\) est-elle dérivable en
+            \[
+            \frac23\,?
+            \]
+
+        </div>
+
+
+        <div class="enonce-question">
+
+            <strong>4.</strong>
+
+            <strong>a.</strong>
+            Calculer
+            \[
+            f\left(-\frac12\right),
+            \qquad
+            f(0),
+            \qquad
+            f\left(\frac12\right).
+            \]
+
+        </div>
+
+        <div class="enonce-sous-question">
+
+            <strong>b.</strong>
+            En déduire les nombres dérivés de \(f^{-1}\) en
+            \[
+            \frac53,\qquad
+            1
+            \qquad\text{et}\qquad
+            \frac57.
+            \]
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     INTRODUCTION
+===================================================== -->
+
+<div class="introduction">
+
+    <strong>Travail préparatoire</strong>
+
+    <p>
+        On conserve la même fonction dans toutes les activités.
+    </p>
+
+    <p>
+        Les questions sont volontairement séparées :
+        chaque activité permet de travailler un aspect
+        particulier de l'étude de cette fonction.
+    </p>
+
+    <p>
+        Les résultats seront ensuite réunis pour construire
+        progressivement une étude complète.
+    </p>
+
+</div>
+
+
+<!-- =====================================================
+     FONCTION DE RÉFÉRENCE
+===================================================== -->
+
+<div class="fonction">
+
+\[
+\boxed{
+f(x)=
+\frac{x^2+1}
+     {x^2+x+1}
+}
+\qquad
+x\in[-1,1]
+\]
+
+</div>
+
+
+<!-- =====================================================
+     ACTIVITÉ 1 — LIMITES
+===================================================== -->
+
+<h2>
+    Activité 1 — Limites
+</h2>
+
+
+<div class="activite">
+
+    <div class="activite-titre">
+        Calculer quelques limites
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">1.</span>
+
+        Calculer :
+
+        \[
+        \lim_{x\to+\infty}
+        \frac{x^2+1}{x^2+x+1}.
+        \]
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">2.</span>
+
+        Calculer :
+
+        \[
+        \lim_{x\to-\infty}
+        \frac{x^2+1}{x^2+x+1}.
+        \]
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">3.</span>
+
+        Calculer :
+
+        \[
+        \lim_{x\to-1}
+        \frac{x^2+1}{x^2+x+1}
+        \]
+
+        et
+
+        \[
+        \lim_{x\to1}
+        \frac{x^2+1}{x^2+x+1}.
+        \]
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Une petite aide ?
+        </div>
+
+        <div class="aide-contenu">
+
+            Pour les limites à l'infini, compare les termes
+            de plus haut degré.
+
+            \[
+            \frac{x^2+1}{x^2+x+1}
+            \sim
+            \frac{x^2}{x^2}.
+            \]
+
+            <br>
+
+            Pour les limites en \(-1\) et \(1\),
+            vérifie d'abord la valeur du dénominateur.
+
+        </div>
+
+    </div>
+
+
+    <div class="theoreme-rollover">
+
+        <span class="theoreme-question">
+            📖 Théorème utilisé — passer la souris
+        </span>
+
+        <div class="theoreme-cache">
+
+            <div class="theoreme-titre">
+                Limite d'un quotient
+            </div>
+
+            <div class="theoreme-texte">
+
+                Si le numérateur et le dénominateur
+                admettent des limites finies et si la limite
+                du dénominateur est non nulle, alors la limite
+                du quotient est le quotient des limites.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ACTIVITÉ 2 — CONTINUITÉ
+===================================================== -->
+
+<h2>
+    Activité 2 — Continuité
+</h2>
+
+
+<div class="activite">
+
+    <div class="activite-titre">
+        Étudier la continuité de \(f\)
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">1.</span>
+
+        Résoudre dans \(\mathbb R\) :
+
+        \[
+        x^2+x+1=0.
+        \]
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">2.</span>
+
+        En déduire que
+
+        \[
+        x^2+x+1\neq0
+        \]
+
+        pour tout réel \(x\).
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">3.</span>
+
+        Déterminer l'ensemble de définition de \(f\).
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">4.</span>
+
+        Justifier que \(f\) est continue sur
+        \([-1,1]\).
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Quel résultat permet de conclure ?
+        </div>
+
+        <div class="aide-contenu">
+
+            Le dénominateur est un polynôme.
+
+            <br><br>
+
+            Il faut vérifier qu'il ne s'annule pas
+            sur l'intervalle étudié.
+
+            <br><br>
+
+            Ici, il ne s'annule jamais.
+
+        </div>
+
+    </div>
+
+
+    <div class="theoreme-rollover">
+
+        <span class="theoreme-question">
+            📖 Théorème utilisé — passer la souris
+        </span>
+
+        <div class="theoreme-cache">
+
+            <div class="theoreme-titre">
+                Continuité d'une fonction rationnelle
+            </div>
+
+            <div class="theoreme-texte">
+
+                Une fonction rationnelle est continue sur tout
+                intervalle inclus dans son domaine de définition.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ACTIVITÉ 3 — VALEURS
+===================================================== -->
+
+<h2>
+    Activité 3 — Quelques valeurs de \(f\)
+</h2>
+
+
+<div class="activite">
+
+    <div class="activite-titre">
+        Calculs directs
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">1.</span>
+
+        Calculer :
+
+        \[
+        f(-1),
+        \qquad
+        f(0),
+        \qquad
+        f(1).
+        \]
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">2.</span>
+
+        Comparer les trois nombres obtenus.
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">3.</span>
+
+        Ces trois valeurs permettent-elles à elles seules
+        de connaître toutes les valeurs prises par \(f\)
+        sur \([-1,1]\) ?
+
+        Justifier.
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ACTIVITÉ 4 — DÉRIVÉE
+===================================================== -->
+
+<h2>
+    Activité 4 — Calcul de la dérivée
+</h2>
+
+
+<div class="activite">
+
+    <div class="activite-titre">
+        Étudier \(f'(x)\)
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">1.</span>
+
+        Calculer \(f'(x)\).
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">2.</span>
+
+        Montrer que
+
+        \[
+        \boxed{
+        f'(x)=
+        \frac{x^2-1}
+        {(x^2+x+1)^2}
+        }.
+        \]
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">3.</span>
+
+        Étudier le signe de \(f'(x)\) sur \([-1,1]\).
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">4.</span>
+
+        En déduire le sens de variation de \(f\).
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Pour étudier le signe...
+        </div>
+
+        <div class="aide-contenu">
+
+            Sur \([-1,1]\),
+
+            \[
+            x^2-1\leq0.
+            \]
+
+            De plus,
+
+            \[
+            (x^2+x+1)^2>0.
+            \]
+
+            Donc :
+
+            \[
+            f'(x)\leq0.
+            \]
+
+            Pour \(-1<x<1\),
+
+            \[
+            f'(x)<0.
+            \]
+
+        </div>
+
+    </div>
+
+
+    <div class="theoreme-rollover">
+
+        <span class="theoreme-question">
+            📖 Théorème utilisé — passer la souris
+        </span>
+
+        <div class="theoreme-cache">
+
+            <div class="theoreme-titre">
+                Signe de la dérivée et variations
+            </div>
+
+            <div class="theoreme-texte">
+
+                Si \(f'(x)\geq0\) sur un intervalle,
+                alors \(f\) y est croissante.
+
+                <p>
+                    Si \(f'(x)\leq0\) sur un intervalle,
+                    alors \(f\) y est décroissante.
+                </p>
+
+                <p>
+                    Lorsque le signe est strict sur l'intervalle
+                    ouvert considéré, on obtient une variation stricte.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="resultat">
+
+        \[
+        \boxed{
+        f\text{ est strictement décroissante sur }[-1,1].
+        }
+        \]
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ACTIVITÉ 5 — IMAGE DE L'INTERVALLE
+===================================================== -->
+
+<h2>
+    Activité 5 — Image de l'intervalle
+</h2>
+
+
+<div class="activite">
+
+    <div class="activite-titre">
+        Relier dérivée, variations et image
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">1.</span>
+
+        On sait que \(f\) est continue et strictement
+        décroissante sur \([-1,1]\).
+
+        Quelle information peut-on obtenir sur
+        \(f([-1,1])\) ?
+
+    </div>
+
+
+    <!-- =================================================
+         THÉORÈME PAGE 16
+    ================================================= -->
+
+    <div class="theoreme-rollover">
+
+        <span class="theoreme-question">
+            📖 Théorème (admis) — passer la souris
+        </span>
+
+        <div class="theoreme-cache">
+
+            <div class="theoreme-titre">
+                Théorème (admis)
+            </div>
+
+            <div class="theoreme-texte">
+
+                L'image d'un intervalle \(I\) par une fonction
+                continue et strictement monotone sur \(I\)
+                est un intervalle de même nature.
+
+                <br><br>
+
+                Pour
+                \(I=[a,b]\) :
+
+                <table class="table-theoreme">
+
+                    <tr>
+                        <th>Nature de \(f\)</th>
+                        <th>Image de \([a,b]\)</th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            \(f\) strictement croissante
+                        </td>
+
+                        <td>
+                            \[
+                            f([a,b])=[f(a),f(b)]
+                            \]
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="cas-utilise">
+                            \(f\) strictement décroissante
+                        </td>
+
+                        <td class="cas-utilise">
+                            \[
+                            \boxed{
+                            f([a,b])=[f(b),f(a)]
+                            }
+                            \]
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            \(I=[a,b[\)
+                        </td>
+
+                        <td>
+                            \[
+                            [f(a),f(b)[
+                            \quad\text{ou}\quad
+                            ]f(b),f(a)]
+                            \]
+                            selon le sens de variation.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            \(I=]a,b]\)
+                        </td>
+
+                        <td>
+                            Intervalle de même nature.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            \(I=]a,b[\)
+                        </td>
+
+                        <td>
+                            Intervalle ouvert.
+                        </td>
+                    </tr>
+
+                </table>
+
+                <div class="legende-cas">
+
+                    <span class="rouge">
+                        Cas utilisé ici :
+                    </span>
+
+                    \(I=[-1,1]\) et \(f\) strictement décroissante.
+
+                </div>
+
+            </div>
+
+            <div class="theoreme-page">
+                📘 Continuité et limites — <b>page 16</b>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         APPLICATION
+    ================================================= -->
+
+    <div class="application">
+
+        <div class="application-titre">
+            Application à notre fonction
+        </div>
+
+        <p>
+            Ici :
+        </p>
+
+        \[
+        I=[-1,1].
+        \]
+
+        <p>
+            Comme \(f\) est strictement décroissante sur
+            \([-1,1]\), on utilise le cas :
+        </p>
+
+        \[
+        \boxed{
+        f([a,b])=[f(b),f(a)]
+        }.
+        \]
+
+        <p>
+            Avec \(a=-1\) et \(b=1\), on obtient :
+        </p>
+
+        \[
+        f([-1,1])
+        =
+        [f(1),f(-1)].
+        \]
+
+        <p>
+            Calculons les deux bornes :
+        </p>
+
+        \[
+        f(-1)
+        =
+        \frac{(-1)^2+1}
+        {(-1)^2+(-1)+1}
+        =
+        2
+        \]
+
+        \[
+        f(1)
+        =
+        \frac{1^2+1}
+        {1^2+1+1}
+        =
+        \frac23.
+        \]
+
+        <p>
+            Par conséquent :
+        </p>
+
+        <div class="resultat">
+
+            \[
+            \boxed{
+            f([-1,1])
+            =
+            \left[\frac23,2\right]
+            }
+            \]
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         TABLEAU DE VARIATION
+    ================================================= -->
+
+    <div class="question">
+
+        <span class="numero">2.</span>
+
+        Utiliser les résultats obtenus pour compléter
+        le tableau de variation de \(f\).
+
+        <table class="tableau">
+
+            <tr>
+                <td>\(x\)</td>
+                <td>\(-1\)</td>
+                <td></td>
+                <td>\(1\)</td>
+            </tr>
+
+            <tr>
+                <td>\(f'(x)\)</td>
+                <td></td>
+                <td>\(-\)</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>\(f(x)\)</td>
+                <td>\(2\)</td>
+                <td>\(\searrow\)</td>
+                <td>\(\frac23\)</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ACTIVITÉ 6 — EXISTENCE ET UNICITÉ
+===================================================== -->
+
+<h2>
+    Activité 6 — Une valeur particulière
+</h2>
+
+
+<div class="activite">
+
+    <div class="activite-titre">
+        Chercher si une valeur est atteinte
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">1.</span>
+
+        Le nombre \(1\) appartient-il à
+
+        \[
+        f([-1,1])?
+        \]
+
+        Justifier.
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">2.</span>
+
+        Que peut-on alors affirmer concernant l'existence
+        d'un réel \(x\in[-1,1]\) tel que
+
+        \[
+        f(x)=1?
+        \]
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">3.</span>
+
+        Combien de solutions l'équation
+
+        \[
+        f(x)=1
+        \]
+
+        peut-elle avoir sur \([-1,1]\) ?
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">4.</span>
+
+        Résoudre directement cette équation et comparer
+        avec le raisonnement précédent.
+
+    </div>
+
+
+    <div class="theoreme-rollover">
+
+        <span class="theoreme-question">
+            📖 Théorème utilisé — passer la souris
+        </span>
+
+        <div class="theoreme-cache">
+
+            <div class="theoreme-titre">
+                Existence et unicité
+            </div>
+
+            <div class="theoreme-texte">
+
+                La continuité permet d'assurer qu'une valeur
+                comprise entre deux valeurs prises par la fonction
+                est atteinte.
+
+                <p>
+                    La stricte monotonie assure qu'elle ne peut être
+                    atteinte qu'une seule fois.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ACTIVITÉ 7 — COMPARAISON AVEC x
+===================================================== -->
+
+<h2>
+    Activité 7 — Comparer \(f(x)\) et \(x\)
+</h2>
+
+
+<div class="activite">
+
+    <div class="activite-titre">
+        Une nouvelle comparaison
+    </div>
+
+
+    <p>
+        Pour un même réel \(x\), on peut comparer les deux
+        nombres \(f(x)\) et \(x\).
+    </p>
+
+
+    <div class="question">
+
+        <span class="numero">1.</span>
+
+        On pose
+
+        \[
+        g(x)=f(x)-x.
+        \]
+
+        Calculer \(g(x)\).
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">2.</span>
+
+        Montrer que
+
+        \[
+        \boxed{
+        g(x)=
+        \frac{-x^3-x^2-x+1}
+        {x^2+x+1}
+        }.
+        \]
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">3.</span>
+
+        Résoudre :
+
+        \[
+        g(x)=0.
+        \]
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Pour l'unicité de la solution...
+        </div>
+
+        <div class="aide-contenu">
+
+            Puisque
+
+            \[
+            x^2+x+1>0,
+            \]
+
+            l'équation
+
+            \[
+            g(x)=0
+            \]
+
+            équivaut à
+
+            \[
+            -x^3-x^2-x+1=0,
+            \]
+
+            c'est-à-dire
+
+            \[
+            x^3+x-1=0.
+            \]
+
+            <br><br>
+
+            Posons
+
+            \[
+            p(x)=x^3+x-1.
+            \]
+
+            Alors
+
+            \[
+            p'(x)=3x^2+1>0.
+            \]
+
+            Donc \(p\) est strictement croissante.
+
+            <br><br>
+
+            Une fonction strictement croissante ne peut
+            s'annuler qu'une seule fois.
+
+        </div>
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">4.</span>
+
+        Vérifier que la solution \(\alpha\) appartient à
+
+        \[
+        \left]\frac23,1\right[.
+        \]
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Compare \(p(2/3)\) et \(p(1)\).
+        </div>
+
+        <div class="aide-contenu">
+
+            On a :
+
+            \[
+            p\left(\frac23\right)
+            =
+            \frac{8}{27}+\frac23-1
+            =
+            -\frac1{27}<0.
+            \]
+
+            <br>
+
+            Et :
+
+            \[
+            p(1)=1>0.
+            \]
+
+            <br>
+
+            Comme \(p\) est continue et strictement croissante,
+            son unique zéro vérifie :
+
+            \[
+            \boxed{
+            \frac23<\alpha<1
+            }.
+            \]
+
+        </div>
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">5.</span>
+
+        En déduire les solutions de
+
+        \[
+        f(x)=x.
+        \]
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">6.</span>
+
+        Que signifie graphiquement une solution de
+
+        \[
+        f(x)=x?
+        \]
+
+    </div>
+
+
+    <div class="theoreme-rollover">
+
+        <span class="theoreme-question">
+            📖 Interprétation graphique — passer la souris
+        </span>
+
+        <div class="theoreme-cache">
+
+            <div class="theoreme-titre">
+                Intersection avec la droite \(y=x\)
+            </div>
+
+            <div class="theoreme-texte">
+
+                Un point \(M\) de la courbe \(C_f\) possède
+                les coordonnées
+
+                \[
+                M(x,f(x)).
+                \]
+
+                <p>
+                    Il appartient à la droite
+                </p>
+
+                \[
+                \Delta:y=x
+                \]
+
+                <p>
+                    si et seulement si
+                </p>
+
+                \[
+                f(x)=x.
+                \]
+
+                <p>
+                    Ainsi, les solutions de \(f(x)=x\)
+                    correspondent exactement aux points
+                    d'intersection de \(C_f\) et de \(\Delta\).
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SYNTHÈSE
+===================================================== -->
+
+<div class="synthese">
+
+    <div class="synthese-titre">
+        Synthèse — Réunir les résultats
+    </div>
+
+
+    <p>
+        Pour
+    </p>
+
+    \[
+    f(x)=
+    \frac{x^2+1}
+         {x^2+x+1},
+    \qquad
+    x\in[-1,1],
+    \]
+
+    <p>
+        nous avons étudié successivement :
+    </p>
+
+
+    <p>
+        \[
+        \boxed{\text{le domaine de définition}}
+        \]
+    </p>
+
+
+    <p>
+        \[
+        \boxed{\text{la continuité}}
+        \]
+    </p>
+
+
+    <p>
+        \[
+        \boxed{\text{la dérivée}}
+        \]
+    </p>
+
+
+    <p>
+        \[
+        \boxed{\text{le signe de }f'}
+        \]
+    </p>
+
+
+    <p>
+        \[
+        \boxed{\text{les variations}}
+        \]
+    </p>
+
+
+    <p>
+        \[
+        \boxed{\text{l'image de }[-1,1]}
+        \]
+    </p>
+
+
+    <p>
+        et enfin la comparaison entre \(f(x)\) et \(x\).
+    </p>
+
+
+    <div class="resultat">
+
+        \[
+        \boxed{
+        f([-1,1])
+        =
+        \left[\frac23,2\right]
+        }
+        \]
+
+    </div>
+
+
+    <p>
+        Nous pouvons maintenant regrouper ces résultats
+        pour comprendre la nature de l'application
+    </p>
+
+    \[
+    f:
+    [-1,1]
+    \longrightarrow
+    \left[\frac23,2\right].
+    \]
+
+</div>
+
+
+<!-- =====================================================
+     ACTIVITÉ 8 — BIJECTION
+===================================================== -->
+
+<h2>
+    Activité 8 — Comprendre la bijection
+</h2>
+
+
+<div class="activite">
+
+    <div class="activite-titre">
+        Regrouper les résultats obtenus
+    </div>
+
+
+    <p>
+        Nous savons maintenant que :
+    </p>
+
+    \[
+    f([-1,1])
+    =
+    \left[\frac23,2\right]
+    \]
+
+    <p>
+        et que \(f\) est strictement décroissante sur
+        \([-1,1]\).
+    </p>
+
+
+    <div class="question">
+
+        <span class="numero">1.</span>
+
+        Peut-on avoir deux nombres distincts \(x_1\) et \(x_2\)
+        de \([-1,1]\) tels que
+
+        \[
+        f(x_1)=f(x_2)?
+        \]
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Que signifie « strictement décroissante » ?
+        </div>
+
+        <div class="aide-contenu">
+
+            Si
+
+            \[
+            x_1<x_2,
+            \]
+
+            alors
+
+            \[
+            f(x_1)>f(x_2).
+            \]
+
+            Les deux images ne peuvent donc pas être égales.
+
+        </div>
+
+    </div>
+
+
+    <div class="theoreme-rollover">
+
+        <span class="theoreme-question">
+            📖 Nouvelle propriété — passer la souris
+        </span>
+
+        <div class="theoreme-cache">
+
+            <div class="theoreme-titre">
+                Fonction strictement monotone
+            </div>
+
+            <div class="theoreme-texte">
+
+                Une fonction strictement monotone sur un intervalle
+                est injective sur cet intervalle.
+
+                <p>
+                    Ici, puisque \(f\) est strictement décroissante
+                    sur \([-1,1]\), deux réels distincts de
+                    \([-1,1]\) ne peuvent pas avoir la même image.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">2.</span>
+
+        D'après l'activité 5, quelle est l'image de \([-1,1]\) ?
+
+        \[
+        \boxed{
+        f([-1,1])
+        =
+        \left[\frac23,2\right]
+        }
+        \]
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">3.</span>
+
+        Soit \(y\) un réel appartenant à
+
+        \[
+        \left[\frac23,2\right].
+        \]
+
+        Que peut-on dire de l'équation
+
+        \[
+        f(x)=y
+        \]
+
+        sur \([-1,1]\) ?
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Pense à l'image de l'intervalle.
+        </div>
+
+        <div class="aide-contenu">
+
+            Puisque
+
+            \[
+            y\in f([-1,1]),
+            \]
+
+            il existe au moins un
+
+            \[
+            x\in[-1,1]
+            \]
+
+            tel que
+
+            \[
+            f(x)=y.
+            \]
+
+            <br><br>
+
+            Et puisque \(f\) est strictement décroissante,
+            cet \(x\) est unique.
+
+        </div>
+
+    </div>
+
+
+    <div class="theoreme-rollover">
+
+        <span class="theoreme-question">
+            📖 Nouvelle notion — passer la souris
+        </span>
+
+        <div class="theoreme-cache">
+
+            <div class="theoreme-titre">
+                Bijection
+            </div>
+
+            <div class="theoreme-texte">
+
+                Une fonction est une bijection d'un ensemble \(E\)
+                sur un ensemble \(F\) lorsqu'à tout élément de \(F\)
+                correspond un unique élément de \(E\).
+
+                <br><br>
+
+                Dans notre situation :
+
+                \[
+                f:
+                [-1,1]
+                \longrightarrow
+                \left[\frac23,2\right].
+                \]
+
+                <br>
+
+                Chaque
+
+                \[
+                y\in\left[\frac23,2\right]
+                \]
+
+                possède un unique antécédent
+
+                \[
+                x\in[-1,1].
+                \]
+
+            </div>
+
+            <div class="theoreme-page">
+                📘 Notion de bijection — référence du cours
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="resultat">
+
+        \[
+        \boxed{
+        f:
+        [-1,1]
+        \longrightarrow
+        \left[\frac23,2\right]
+        \text{ est une bijection}
+        }
+        \]
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ÉTAPE SUIVANTE — FONCTION RÉCIPROQUE
+===================================================== -->
+
+<h2>
+    Étape suivante — Fonction réciproque
+</h2>
+
+
+<div class="etape-suivante">
+
+    <p>
+        Maintenant que nous avons établi la bijection,
+        une nouvelle question apparaît naturellement :
+    </p>
+
+    \[
+    f(x)=y
+    \qquad\Longrightarrow\qquad
+    x=?
+    \]
+
+    <p>
+        Pour chaque
+
+        \[
+        y\in
+        \left[\frac23,2\right],
+        \]
+
+        il existe un unique
+
+        \[
+        x\in[-1,1]
+        \]
+
+        tel que
+
+        \[
+        f(x)=y.
+        \]
+
+    </p>
+
+    <p>
+        Nous allons donc introduire progressivement la
+        <strong>fonction réciproque \(f^{-1}\)</strong>.
+    </p>
+
+    <p>
+        Cette nouvelle notion permettra ensuite de revenir
+        naturellement à la <strong>question 3</strong> de
+        l'Exercice 17 :
+    </p>
+
+    \[
+    \boxed{
+    \text{La fonction }f^{-1}\text{ est-elle dérivable en }
+    \frac23?
+    }
+    \]
+
+</div>
+<!-- =====================================================
+     ACTIVITÉ 9 — FONCTION RÉCIPROQUE
+===================================================== -->
+
+<h2>
+    Activité 9 — Construire la fonction réciproque
+</h2>
+
+
+<div class="activite">
+
+    <div class="activite-titre">
+        De l'antécédent vers l'image... et inversement
+    </div>
+
+
+    <p>
+        Nous avons montré que
+        \(f\) réalise une bijection de
+        \([-1,1]\) sur
+        \(\left[\frac23,2\right]\).
+    </p>
+
+
+    <div class="question">
+
+        <span class="numero">1.</span>
+
+        Soit
+
+        \[
+        y\in
+        \left[\frac23,2\right].
+        \]
+
+        Que peut-on dire de l'équation
+
+        \[
+        f(x)=y
+        \]
+
+        dans \([-1,1]\) ?
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Rappelle-toi ce que signifie « bijection ».
+        </div>
+
+        <div class="aide-contenu">
+
+            Pour chaque
+
+            \[
+            y\in
+            \left[\frac23,2\right],
+            \]
+
+            l'équation
+
+            \[
+            f(x)=y
+            \]
+
+            possède un unique \(x\in[-1,1]\).
+
+        </div>
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">2.</span>
+
+        On note cet unique nombre \(x\) par
+
+        \[
+        x=f^{-1}(y).
+        \]
+
+        Quelle est alors l'ensemble de définition de
+        \(f^{-1}\) ?
+
+    </div>
+
+
+    <div class="theoreme-rollover">
+
+        <span class="theoreme-question">
+            📖 Nouvelle notion — passer la souris
+        </span>
+
+        <div class="theoreme-cache">
+
+            <div class="theoreme-titre">
+                Fonction réciproque
+            </div>
+
+            <div class="theoreme-texte">
+
+                Si une fonction \(f\) réalise une bijection de
+                \(I\) sur \(J\), alors elle admet une fonction
+                réciproque
+
+                \[
+                f^{-1}:J\longrightarrow I.
+                \]
+
+                <p>
+                    Pour tout \(x\in I\) :
+                </p>
+
+                \[
+                f^{-1}(f(x))=x.
+                \]
+
+                <p>
+                    Et pour tout \(y\in J\) :
+                </p>
+
+                \[
+                f(f^{-1}(y))=y.
+                \]
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="resultat">
+
+        \[
+        \boxed{
+        f^{-1}:
+        \left[\frac23,2\right]
+        \longrightarrow
+        [-1,1]
+        }
+        \]
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">3.</span>
+
+        Compléter :
+
+        \[
+        f(-1)=2
+        \quad\Longrightarrow\quad
+        f^{-1}(2)=\;?
+        \]
+
+        <br>
+
+        \[
+        f(0)=1
+        \quad\Longrightarrow\quad
+        f^{-1}(1)=\;?
+        \]
+
+        <br>
+
+        \[
+        f(1)=\frac23
+        \quad\Longrightarrow\quad
+        f^{-1}\left(\frac23\right)=\;?
+        \]
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Une image et son antécédent sont simplement échangés.
+        </div>
+
+        <div class="aide-contenu">
+
+            On a :
+
+            \[
+            f(-1)=2
+            \]
+
+            donc
+
+            \[
+            \boxed{f^{-1}(2)=-1}.
+            \]
+
+            De même :
+
+            \[
+            \boxed{f^{-1}(1)=0}
+            \]
+
+            et
+
+            \[
+            \boxed{
+            f^{-1}\left(\frac23\right)=1
+            }.
+            \]
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     ACTIVITÉ 10 — DÉRIVÉE DE LA RÉCIPROQUE
+===================================================== -->
+
+<h2>
+    Activité 10 — Dérivée de la fonction réciproque
+</h2>
+
+
+<div class="activite">
+
+    <div class="activite-titre">
+        Pourquoi le point \(\frac23\) est-il particulier ?
+    </div>
+
+
+    <p>
+        L'exercice demande :
+    </p>
+
+    \[
+    \boxed{
+    \text{La fonction }f^{-1}
+    \text{ est-elle dérivable en }
+    \frac23?
+    }
+    \]
+
+
+    <div class="question">
+
+        <span class="numero">1.</span>
+
+        Quelle est la valeur de \(x\) telle que
+
+        \[
+        f(x)=\frac23?
+        \]
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">2.</span>
+
+        Calculer
+
+        \[
+        f'(1).
+        \]
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Utilise la formule de \(f'(x)\) déjà obtenue.
+        </div>
+
+        <div class="aide-contenu">
+
+            Nous avons obtenu :
+
+            \[
+            f'(x)=
+            \frac{x^2-1}
+            {(x^2+x+1)^2}.
+            \]
+
+            Donc :
+
+            \[
+            f'(1)
+            =
+            \frac{1-1}
+            {(1+1+1)^2}
+            =
+            0.
+            \]
+
+            Ainsi :
+
+            \[
+            \boxed{f'(1)=0}.
+            \]
+
+        </div>
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">3.</span>
+
+        Que donnerait la formule
+
+        \[
+        (f^{-1})'(f(a))
+        =
+        \frac{1}{f'(a)}
+        \]
+
+        avec \(a=1\) ?
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Attention au dénominateur.
+        </div>
+
+        <div class="aide-contenu">
+
+            Puisque
+
+            \[
+            f'(1)=0,
+            \]
+
+            la formule conduirait à
+
+            \[
+            \frac1{f'(1)}
+            =
+            \frac10,
+            \]
+
+            ce qui n'a pas de sens.
+
+            <br><br>
+
+            Il faut donc étudier directement ce qui se passe
+            au voisinage de
+
+            \[
+            y=\frac23.
+            \]
+
+        </div>
+
+    </div>
+
+
+    <div class="theoreme-rollover">
+
+        <span class="theoreme-question">
+            📖 Théorème — dérivée de la fonction réciproque
+            — passer la souris
+        </span>
+
+        <div class="theoreme-cache">
+
+            <div class="theoreme-titre">
+                Dérivée de la fonction réciproque
+            </div>
+
+            <div class="theoreme-texte">
+
+                Si \(f\) est bijective et dérivable en \(a\),
+                avec
+
+                \[
+                f'(a)\neq0,
+                \]
+
+                alors \(f^{-1}\) est dérivable en \(f(a)\)
+                et
+
+                \[
+                \boxed{
+                (f^{-1})'(f(a))
+                =
+                \frac{1}{f'(a)}
+                }.
+                \]
+
+                <br><br>
+
+                <span class="rouge">
+                    Ici, pour \(a=1\),
+                    \(f'(1)=0\).
+                </span>
+
+                <br>
+
+                La formule ne peut donc pas être appliquée.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ÉTUDE DIRECTE
+    ================================================= -->
+
+    <div class="question">
+
+        <span class="numero">4.</span>
+
+        Montrer que
+
+        \[
+        f(x)-\frac23
+        =
+        \frac{(x-1)^2}
+        {3(x^2+x+1)}.
+        \]
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Mets les deux fractions au même dénominateur.
+        </div>
+
+        <div class="aide-contenu">
+
+            On écrit :
+
+            \[
+            f(x)-\frac23
+            =
+            \frac{x^2+1}{x^2+x+1}
+            -
+            \frac23.
+            \]
+
+            Donc :
+
+            \[
+            f(x)-\frac23
+            =
+            \frac{
+            3(x^2+1)-2(x^2+x+1)
+            }
+            {3(x^2+x+1)}.
+            \]
+
+            Le numérateur devient :
+
+            \[
+            3x^2+3-2x^2-2x-2
+            =
+            x^2-2x+1
+            =
+            (x-1)^2.
+            \]
+
+            Ainsi :
+
+            \[
+            \boxed{
+            f(x)-\frac23
+            =
+            \frac{(x-1)^2}
+            {3(x^2+x+1)}
+            }.
+            \]
+
+        </div>
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">5.</span>
+
+        Soit
+
+        \[
+        y=f(x).
+        \]
+
+        Que devient la relation précédente lorsque
+        \(x\to1^{-}\) ?
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Observe le comportement du dénominateur.
+        </div>
+
+        <div class="aide-contenu">
+
+            Lorsque
+
+            \[
+            x\to1^-,
+            \]
+
+            on a
+
+            \[
+            x^2+x+1\to3.
+            \]
+
+            Donc :
+
+            \[
+            y-\frac23
+            =
+            \frac{(x-1)^2}
+            {3(x^2+x+1)}
+            \sim
+            \frac{(x-1)^2}{9}.
+            \]
+
+        </div>
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">6.</span>
+
+        En déduire le comportement du quotient
+
+        \[
+        \frac{x-1}
+        {f(x)-\frac23}
+        \]
+
+        lorsque \(x\to1^-\).
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Remplace \(f(x)-\frac23\) par son expression.
+        </div>
+
+        <div class="aide-contenu">
+
+            On a :
+
+            \[
+            \frac{x-1}
+            {f(x)-\frac23}
+            =
+            \frac{x-1}
+            {
+            \dfrac{(x-1)^2}
+            {3(x^2+x+1)}
+            }.
+            \]
+
+            Donc :
+
+            \[
+            \frac{x-1}
+            {f(x)-\frac23}
+            =
+            \frac{
+            3(x^2+x+1)
+            }
+            {x-1}.
+            \]
+
+            Lorsque \(x\to1^-\),
+
+            \[
+            3(x^2+x+1)\to9
+            \]
+
+            tandis que
+
+            \[
+            x-1\to0^-.
+            \]
+
+            Par conséquent :
+
+            \[
+            \boxed{
+            \frac{x-1}
+            {f(x)-\frac23}
+            \longrightarrow-\infty
+            }.
+            \]
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         LIEN AVEC LA RÉCIPROQUE
+    ================================================= -->
+
+    <div class="question">
+
+        <span class="numero">7.</span>
+
+        Posons
+
+        \[
+        y=f(x).
+        \]
+
+        Puisque
+
+        \[
+        x=f^{-1}(y),
+        \]
+
+        réécrire le quotient précédent sous la forme
+
+        \[
+        \frac{
+        f^{-1}(y)-f^{-1}\left(\frac23\right)
+        }
+        {
+        y-\frac23
+        }.
+        \]
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Utilise \(f^{-1}(f(x))=x\).
+        </div>
+
+        <div class="aide-contenu">
+
+            Puisque
+
+            \[
+            y=f(x),
+            \]
+
+            on a :
+
+            \[
+            f^{-1}(y)=x.
+            \]
+
+            Et puisque
+
+            \[
+            f(1)=\frac23,
+            \]
+
+            alors :
+
+            \[
+            f^{-1}\left(\frac23\right)=1.
+            \]
+
+            Le quotient devient donc :
+
+            \[
+            \boxed{
+            \frac{
+            f^{-1}(y)-1
+            }
+            {
+            y-\frac23
+            }
+            }.
+            \]
+
+        </div>
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">8.</span>
+
+        Que peut-on conclure concernant la dérivabilité de
+        \(f^{-1}\) en \(\frac23\) ?
+
+    </div>
+
+
+    <div class="resultat">
+
+        \[
+        \boxed{
+        f^{-1}\text{ n'est pas dérivable en }
+        \frac23
+        }
+        \]
+
+        <p>
+            Le taux d'accroissement tend vers
+            \(-\infty\), et non vers un nombre réel fini.
+        </p>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     ACTIVITÉ 11 — VALEURS UTILES POUR LA QUESTION 4
+===================================================== -->
+
+<h2>
+    Activité 11 — Préparer la question 4
+</h2>
+
+
+<div class="activite">
+
+    <div class="activite-titre">
+        Calculer quelques images
+    </div>
+
+
+    <p>
+        L'exercice demande de calculer :
+    </p>
+
+    \[
+    f\left(-\frac12\right),
+    \qquad
+    f(0),
+    \qquad
+    f\left(\frac12\right).
+    \]
+
+
+    <div class="question">
+
+        <span class="numero">1.</span>
+
+        Calculer
+
+        \[
+        f\left(-\frac12\right).
+        \]
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">2.</span>
+
+        Calculer
+
+        \[
+        f(0).
+        \]
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">3.</span>
+
+        Calculer
+
+        \[
+        f\left(\frac12\right).
+        \]
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Vérifie soigneusement les carrés et les dénominateurs.
+        </div>
+
+        <div class="aide-contenu">
+
+            Pour \(x=-\frac12\) :
+
+            \[
+            f\left(-\frac12\right)
+            =
+            \frac{\frac14+1}
+            {\frac14-\frac12+1}
+            =
+            \frac{\frac54}{\frac34}
+            =
+            \boxed{\frac53}.
+            \]
+
+            <br><br>
+
+            Pour \(x=0\) :
+
+            \[
+            f(0)=1.
+            \]
+
+            <br><br>
+
+            Pour \(x=\frac12\) :
+
+            \[
+            f\left(\frac12\right)
+            =
+            \frac{\frac14+1}
+            {\frac14+\frac12+1}
+            =
+            \frac{\frac54}{\frac74}
+            =
+            \boxed{\frac57}.
+            \]
+
+        </div>
+
+    </div>
+
+
+    <div class="resultat">
+
+        \[
+        \boxed{
+        f\left(-\frac12\right)=\frac53
+        }
+        \]
+
+        \[
+        \boxed{
+        f(0)=1
+        }
+        \]
+
+        \[
+        \boxed{
+        f\left(\frac12\right)=\frac57
+        }
+        \]
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     ACTIVITÉ 12 — DÉRIVÉES DE LA RÉCIPROQUE
+===================================================== -->
+
+<h2>
+    Activité 12 — Calculer les nombres dérivés de \(f^{-1}\)
+</h2>
+
+
+<div class="activite">
+
+    <div class="activite-titre">
+        Utiliser la formule de la fonction réciproque
+    </div>
+
+
+    <p>
+        Nous avons obtenu :
+    </p>
+
+    \[
+    f'(x)=
+    \frac{x^2-1}
+    {(x^2+x+1)^2}.
+    \]
+
+
+    <div class="question">
+
+        <span class="numero">1.</span>
+
+        Calculer
+
+        \[
+        f'\left(-\frac12\right).
+        \]
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">2.</span>
+
+        Calculer
+
+        \[
+        f'(0).
+        \]
+
+    </div>
+
+
+    <div class="question">
+
+        <span class="numero">3.</span>
+
+        Calculer
+
+        \[
+        f'\left(\frac12\right).
+        \]
+
+    </div>
+
+
+    <div class="aide"
+         onclick="ouvrirAide(this)">
+
+        <div class="aide-question">
+            💡 Puis utilise la formule de la réciproque.
+        </div>
+
+        <div class="aide-contenu">
+
+            Pour
+
+            \[
+            a=-\frac12,
+            \]
+
+            on obtient :
+
+            \[
+            f'\left(-\frac12\right)
+            =
+            \frac{-\frac34}
+            {\left(\frac34\right)^2}
+            =
+            -\frac43.
+            \]
+
+            Donc :
+
+            \[
+            (f^{-1})'\left(\frac53\right)
+            =
+            \frac{1}
+            {-\frac43}
+            =
+            \boxed{-\frac34}.
+            \]
+
+            <br><br>
+
+            Pour \(a=0\) :
+
+            \[
+            f'(0)=-1.
+            \]
+
+            Donc :
+
+            \[
+            \boxed{
+            (f^{-1})'(1)=-1
+            }.
+            \]
+
+            <br><br>
+
+            Pour
+
+            \[
+            a=\frac12,
+            \]
+
+            on obtient :
+
+            \[
+            f'\left(\frac12\right)
+            =
+            \frac{-\frac34}
+            {\left(\frac74\right)^2}
+            =
+            -\frac{12}{49}.
+            \]
+
+            Ainsi :
+
+            \[
+            (f^{-1})'\left(\frac57\right)
+            =
+            \frac1{-\frac{12}{49}}
+            =
+            \boxed{-\frac{49}{12}}.
+            \]
+
+        </div>
+
+    </div>
+
+
+    <div class="theoreme-rollover">
+
+        <span class="theoreme-question">
+            📖 Théorème — dérivée de la réciproque
+            — passer la souris
+        </span>
+
+        <div class="theoreme-cache">
+
+            <div class="theoreme-titre">
+                Formule
+            </div>
+
+            <div class="theoreme-texte">
+
+                Si \(f\) est bijective et dérivable en \(a\),
+                avec
+
+                \[
+                f'(a)\neq0,
+                \]
+
+                alors
+
+                \[
+                \boxed{
+                (f^{-1})'(f(a))
+                =
+                \frac1{f'(a)}
+                }.
+                \]
+
+                <br><br>
+
+                Dans notre exercice, on utilise successivement :
+
+                \[
+                a=-\frac12,
+                \qquad
+                a=0,
+                \qquad
+                a=\frac12.
+                \]
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="resultat">
+
+        \[
+        \boxed{
+        (f^{-1})'\left(\frac53\right)
+        =
+        -\frac34
+        }
+        \]
+
+        \[
+        \boxed{
+        (f^{-1})'(1)
+        =
+        -1
+        }
+        \]
+
+        \[
+        \boxed{
+        (f^{-1})'\left(\frac57\right)
+        =
+        -\frac{49}{12}
+        }
+        \]
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SYNTHÈSE FINALE
+===================================================== -->
+
+<div class="synthese">
+
+    <div class="synthese-titre">
+        Synthèse — Exercice 17
+    </div>
+
+
+    <p>
+        Pour
+    </p>
+
+    \[
+    f(x)=
+    \frac{x^2+1}
+    {x^2+x+1},
+    \qquad x\in[-1,1],
+    \]
+
+    <p>
+        nous avons obtenu :
+    </p>
+
+
+    <p>
+        \[
+        \boxed{
+        f\text{ est continue sur }[-1,1]
+        }
+        \]
+    </p>
+
+
+    <p>
+        \[
+        \boxed{
+        f'(x)=
+        \frac{x^2-1}
+        {(x^2+x+1)^2}
+        }
+        \]
+    </p>
+
+
+    <p>
+        \[
+        \boxed{
+        f\text{ est strictement décroissante sur }[-1,1]
+        }
+        \]
+    </p>
+
+
+    <p>
+        \[
+        \boxed{
+        f([-1,1])
+        =
+        \left[\frac23,2\right]
+        }
+        \]
+    </p>
+
+
+    <p>
+        Ainsi :
+    </p>
+
+    \[
+    \boxed{
+    f:
+    [-1,1]
+    \longrightarrow
+    \left[\frac23,2\right]
+    \text{ est une bijection}
+    }
+    \]
+
+
+    <p>
+        Elle admet donc une fonction réciproque :
+    </p>
+
+    \[
+    \boxed{
+    f^{-1}:
+    \left[\frac23,2\right]
+    \longrightarrow
+    [-1,1]
+    }
+    \]
+
+
+    <p>
+        La valeur particulière
+    </p>
+
+    \[
+    f(1)=\frac23
+    \]
+
+    <p>
+        correspond à
+    </p>
+
+    \[
+    f'(1)=0.
+    \]
+
+    <p>
+        Le cas \(y=\frac23\) est donc différent des autres
+        points étudiés pour la dérivée de la réciproque.
+    </p>
+
+
+    <div class="resultat">
+
+        \[
+        \boxed{
+        f^{-1}\text{ n'est pas dérivable en }
+        \frac23
+        }
+        \]
+
+    </div>
+
+
+    <p>
+        Enfin :
+    </p>
+
+    \[
+    \boxed{
+    (f^{-1})'\left(\frac53\right)
+    =
+    -\frac34
+    }
+    \]
+
+    \[
+    \boxed{
+    (f^{-1})'(1)
+    =
+    -1
+    }
+    \]
+
+    \[
+    \boxed{
+    (f^{-1})'\left(\frac57\right)
+    =
+    -\frac{49}{12}
+    }
+    \]
+
+</div>
+
+<!-- =====================================================
+     PIED DE PAGE
+===================================================== -->
+
+<div class="footer">
+
+    Mathématiques — Préparation progressive<br>
+
+    Exercice 17 — Exercices et problèmes — page 65
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+function ouvrirAide(element) {
+
+    element.classList.toggle("ouverte");
+
+}
+
+</script>
+
+
+</body>
+
+</html>
