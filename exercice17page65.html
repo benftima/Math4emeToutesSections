@@ -217,6 +217,57 @@ h3{font-size:clamp(16px,2.5vw,19px)}
 }
 .aide.ouverte .aide-contenu{display:block}
 
+/* =====================================================
+   THÉORÈME — STYLE DU LIVRE, PAGE 8
+===================================================== */
+.theoreme-livre{
+  width:100%;
+  max-width:100%;
+  margin:18px 0;
+}
+.theoreme-livre-titre{
+  display:inline-block;
+  padding:0 7px;
+  color:#159dcc;
+  font-weight:bold;
+  font-size:clamp(18px,3vw,23px);
+  line-height:1.15;
+}
+.theoreme-livre-corps{
+  width:100%;
+  max-width:100%;
+  background:#c7e8f5;
+  padding:9px clamp(12px,2.5vw,20px) 10px;
+}
+.theoreme-puce{
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  margin:0;
+  font-size:clamp(15px,2vw,18px);
+  line-height:1.45;
+  overflow-wrap:anywhere;
+}
+.theoreme-puce + .theoreme-puce{margin-top:3px}
+.theoreme-puce > span{flex:0 0 auto;font-weight:bold}
+.theoreme-puce > div{min-width:0;max-width:100%}
+.theoreme-livre-page{
+  margin-top:5px;
+  text-align:right;
+  color:#555;
+  font-size:12px;
+  font-style:italic;
+}
+@media (max-width:700px){
+  .theoreme-livre-corps{padding:8px 10px 9px}
+  .theoreme-puce{gap:7px;font-size:15px;line-height:1.4}
+  .theoreme-livre-titre{font-size:20px}
+}
+@media (max-width:430px){
+  .theoreme-livre-titre{font-size:18px;padding-left:4px}
+  .theoreme-livre-corps{padding:7px 8px 8px}
+  .theoreme-puce{font-size:14px;gap:6px}
+}
 /* Theorem */
 .theoreme-rollover{
   margin:18px 0;
@@ -599,6 +650,24 @@ mjx-container[display="true"]{
 ===================================================== */
 @media (max-width:430px){
 
+  .theoreme-livre-titre{
+    font-size:20px;
+  }
+
+  .theoreme-livre-corps{
+    padding:8px 9px 9px;
+    font-size:14px;
+    line-height:1.45;
+  }
+
+  .theoreme-puce{
+    gap:7px;
+  }
+
+  .theoreme-livre-page{
+    font-size:10px;
+  }
+
   .page{
     padding:8px;
   }
@@ -669,6 +738,80 @@ mjx-container[display="true"]{
   mjx-container[display="true"]{
     overflow-x:auto !important;
   }
+}
+
+/* =====================================================
+   THÉORÈME STATIQUE — STYLE DU LIVRE PAGE 12
+===================================================== */
+.theoreme-livre{
+  width:100%;
+  max-width:100%;
+  margin:20px 0;
+  background:#fff;
+  overflow:hidden;
+}
+
+.theoreme-livre-titre{
+  color:#159dcc;
+  font-family:"Times New Roman",Georgia,serif;
+  font-weight:bold;
+  font-size:clamp(19px,3vw,24px);
+  line-height:1.1;
+  padding:0 0 4px 2px;
+}
+
+.theoreme-livre-corps{
+  width:100%;
+  max-width:100%;
+  background:#bfe5f5;
+  padding:10px clamp(10px,2.5vw,18px) 11px;
+  font-family:"Times New Roman",Georgia,serif;
+  font-size:clamp(15px,2.2vw,18px);
+  line-height:1.5;
+}
+
+.theoreme-puce{
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+}
+
+.theoreme-puce .puce{
+  flex:0 0 auto;
+  font-weight:bold;
+}
+
+.theoreme-puce > span:last-child{
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+
+.theoreme-livre-corps mjx-container[display="true"]{
+  max-width:100% !important;
+  overflow-x:auto !important;
+  overflow-y:hidden;
+}
+
+.theoreme-livre-page{
+  padding:5px 2px 0;
+  text-align:right;
+  color:#555;
+  font-size:11px;
+  font-style:italic;
+}
+
+/* =====================================================
+   THÉORÈME PAGE 13 — EXISTENCE ET UNICITÉ
+===================================================== */
+.theoreme-livre-texte{
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+
+.theoreme-livre-texte strong{
+  font-weight:bold;
 }
 
 /* =====================================================
@@ -1037,30 +1180,39 @@ x\in[-1,1]
     </div>
 
 
-    <div class="theoreme-rollover">
+    <div class="theoreme-livre">
 
-        <span class="theoreme-question">
-            📖 Théorème utilisé — passer la souris
-        </span>
+        <div class="theoreme-livre-titre">
+            Théorème
+        </div>
 
-        <div class="theoreme-cache">
+        <div class="theoreme-livre-corps">
 
-            <div class="theoreme-titre">
-                Limite d'un quotient
+            <div class="theoreme-puce">
+                <span>•</span>
+                <div>
+                    La limite d'une fonction polynôme à l'infini
+                    est la même que celle de son terme de plus haut degré.
+                </div>
             </div>
 
-            <div class="theoreme-texte">
-
-                Si le numérateur et le dénominateur
-                admettent des limites finies et si la limite
-                du dénominateur est non nulle, alors la limite
-                du quotient est le quotient des limites.
-
+            <div class="theoreme-puce">
+                <span>•</span>
+                <div>
+                    La limite d'une fonction rationnelle à l'infini
+                    est la même que celle du quotient des termes
+                    de plus haut degré.
+                </div>
             </div>
 
         </div>
 
+        <div class="theoreme-livre-page">
+            📘 Cours — page 8
+        </div>
+
     </div>
+
 
 </div>
 
@@ -1723,31 +1875,66 @@ x\in[-1,1]
     </div>
 
 
-    <div class="theoreme-rollover">
+    <!-- THÉORÈME 1 — EXISTENCE — STYLE LIVRE PAGE 12 -->
 
-        <span class="theoreme-question">
-            📖 Théorème utilisé — passer la souris
-        </span>
+    <div class="theoreme-livre">
 
-        <div class="theoreme-cache">
+        <div class="theoreme-livre-titre">
+            Théorème
+        </div>
 
-            <div class="theoreme-titre">
-                Existence et unicité
+        <div class="theoreme-livre-corps">
+
+            <div class="theoreme-puce">
+                <span class="puce">•</span>
+                <span>
+                    Soit \(f\) une fonction continue sur un intervalle
+                    \([a,b]\). Pour tout réel \(k\) compris entre
+                    \(f(a)\) et \(f(b)\), il existe au moins un réel
+                    \(c\in[a,b]\) tel que
+                    \[
+                    f(c)=k.
+                    \]
+                </span>
             </div>
 
-            <div class="theoreme-texte">
+        </div>
 
-                La continuité permet d'assurer qu'une valeur
-                comprise entre deux valeurs prises par la fonction
-                est atteinte.
+        <div class="theoreme-livre-page">
+            📘 Continuité — <b>page 12</b>
+        </div>
 
-                <p>
-                    La stricte monotonie assure qu'elle ne peut être
-                    atteinte qu'une seule fois.
-                </p>
+    </div>
 
+
+    <!-- THÉORÈME 2 — UNICITÉ — ROLLOVER -->
+
+    <!-- THÉORÈME 2 — EXISTENCE ET UNICITÉ — STYLE LIVRE PAGE 13 -->
+
+    <div class="theoreme-livre">
+
+        <div class="theoreme-livre-titre">
+            Théorème
+        </div>
+
+        <div class="theoreme-livre-corps">
+
+            <div class="theoreme-livre-texte">
+                Soit \(f\) une fonction continue et strictement monotone
+                sur un intervalle \(I\).
+
+                <br>
+
+                Soit \(a\) et \(b\) deux réels de \(I\) tels que \(a<b\).
+                Alors pour tout réel \(k\) compris entre \(f(a)\) et
+                \(f(b)\), l'équation \(f(x)=k\) admet une
+                <strong>unique solution</strong> dans \([a,b]\).
             </div>
 
+        </div>
+
+        <div class="theoreme-livre-page">
+            📘 Cours — <b>page 13</b>
         </div>
 
     </div>
