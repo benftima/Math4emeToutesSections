@@ -193,29 +193,47 @@ h3{font-size:clamp(16px,2.5vw,19px)}
   font-weight:bold;
 }
 
-/* Helpers */
-.aide{
+/* Remarques / suggestions : rollover souris + toucher mobile */
+.remarque-rollover{
   margin:15px 0;
+  position:relative;
+  width:100%;
+  max-width:100%;
   border-top:1px dashed #999;
   border-bottom:1px dashed #999;
-  padding:10px 5px;
+}
+
+.remarque-question{
+  display:block;
+  width:100%;
+  max-width:100%;
+  padding:9px 5px;
   cursor:pointer;
   -webkit-tap-highlight-color:transparent;
-}
-.aide-question{
   font-weight:bold;
   font-size:clamp(13px,2vw,15px);
+  line-height:1.4;
   color:#555;
+  overflow-wrap:anywhere;
 }
-.aide-contenu{
+
+.remarque-cache{
   display:none;
-  margin-top:10px;
+  width:100%;
+  max-width:100%;
+  margin-top:7px;
   padding:11px clamp(10px,2vw,15px);
   background:#f1f1ec;
   border-left:3px solid #777;
-  overflow-x:auto;
+  overflow:hidden;
 }
-.aide.ouverte .aide-contenu{display:block}
+
+.remarque-cache mjx-container[display="true"]{
+  max-width:100% !important;
+  overflow-x:auto !important;
+  overflow-y:hidden;
+}
+
 
 /* =====================================================
    THÉORÈME — STYLE DU LIVRE, PAGE 8
@@ -263,12 +281,227 @@ h3{font-size:clamp(16px,2.5vw,19px)}
   .theoreme-puce{gap:7px;font-size:15px;line-height:1.4}
   .theoreme-livre-titre{font-size:20px}
 }
+
 @media (max-width:430px){
+  .cours-livre-titre{
+    font-size:20px;
+  }
+
+  .cours-livre-corps{
+    padding:7px 8px 8px;
+    font-size:14px;
+    line-height:1.4;
+  }
+
+  .cours-puce{
+    gap:6px;
+  }
+
+
   .theoreme-livre-titre{font-size:18px;padding-left:4px}
   .theoreme-livre-corps{padding:7px 8px 8px}
   .theoreme-puce{font-size:14px;gap:6px}
 }
-/* Theorem */
+
+/* =====================================================
+   COURS DÉRIVABILITÉ — SCIENCES EXPÉRIMENTALES — PAGE 41
+===================================================== */
+.cours-derivabilite-page41 .theoreme-question{
+  background:#b9e2f4;
+  border-top:1px solid #55bde5;
+  border-bottom:1px solid #55bde5;
+  color:#333;
+}
+.cours-page41-corps{
+  background:#b9e2f4;
+  border-left:4px solid #55bde5;
+  border-right:1px solid #9ccddd;
+  padding:12px clamp(8px,2vw,16px);
+}
+.cours-page41-titre{
+  color:#16844a;
+  font-weight:bold;
+  font-size:clamp(18px,2.7vw,23px);
+  margin-bottom:4px;
+}
+.cours-page41-intro{
+  font-size:clamp(14px,2vw,16px);
+  margin-bottom:8px;
+}
+.cours-page41-table-scroll{
+  overflow-x:visible;
+}
+.cours-page41-table{
+  margin:8px 0 4px;
+  font-size:clamp(12px,1.75vw,15px);
+}
+.cours-page41-table th{
+  background:#55bde5;
+  color:#17384a;
+  font-size:clamp(13px,1.9vw,16px);
+}
+.cours-page41-table td{
+  background:#b9e2f4;
+}
+.cours-page41-bas{
+  margin-top:8px;
+  text-align:center;
+  font-weight:bold;
+  color:#333;
+}
+@media (max-width:560px){
+  .cours-page41-table-scroll{
+    overflow:visible;
+  }
+  .cours-page41-table{
+    display:block;
+    width:100% !important;
+    min-width:0;
+    table-layout:auto;
+  }
+  .cours-page41-table thead{
+    display:none;
+  }
+  .cours-page41-table tbody,
+  .cours-page41-table tr{
+    display:block;
+    width:100%;
+  }
+  .cours-page41-table tr{
+    margin:8px 0;
+    border:1px solid #8ccce5;
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .cours-page41-table td{
+    display:block;
+    width:100%;
+    border:0;
+    border-bottom:1px solid white;
+    padding:7px 8px;
+    text-align:left;
+    overflow-wrap:anywhere;
+  }
+  .cours-page41-table td:last-child{
+    border-bottom:0;
+  }
+  .cours-page41-table td::before{
+    content:attr(data-label);
+    display:block;
+    margin-bottom:2px;
+    font-size:10.5px;
+    font-weight:bold;
+    color:#555;
+  }
+}
+
+/* =====================================================
+   ROLLOVERS INDÉPENDANTS — ACTIVITÉ 4
+   Chaque intitulé ouvre uniquement son propre contenu.
+===================================================== */
+.popup-rollover{
+  margin:18px 0;
+  position:relative;
+}
+.popup-rollover .theoreme-question{
+  display:block;
+  width:100%;
+  padding:10px;
+  border-top:1px solid #888;
+  border-bottom:1px solid #888;
+  color:#333;
+  font-weight:bold;
+  font-style:italic;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.popup-rollover .theoreme-cache{
+  display:none;
+  margin-top:7px;
+  padding:13px clamp(10px,2vw,16px);
+  background:var(--blue-light);
+  border-left:4px solid #22a9d6;
+  border-right:1px solid #b5dce9;
+  overflow-x:auto;
+}
+@media (hover:hover) and (pointer:fine){
+  .popup-rollover:hover > .theoreme-cache{
+    display:block;
+  }
+}
+@media (hover:none), (pointer:coarse){
+  .popup-rollover.ouvert > .theoreme-cache{
+    display:block;
+  }
+}
+
+/* Formule du quotient — présentation visible, style manuel */
+.formule-livre-derivabilite{
+  margin:18px 0 20px;
+  border:1px solid #9acde5;
+  background:#bfe3f2;
+  padding:0;
+  overflow:hidden;
+}
+.formule-livre-titre{
+  color:#16834b;
+  font-size:1.05rem;
+  font-weight:700;
+  padding:10px 14px 2px;
+}
+.formule-livre-intro{
+  padding:0 14px 10px;
+}
+.formule-quotient-ligne{
+  display:grid;
+  grid-template-columns:1fr 1.65fr 1fr;
+  border-top:1px solid #fff;
+}
+.formule-quotient-ligne > div{
+  min-width:0;
+  padding:12px 10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  border-right:1px solid #fff;
+}
+.formule-quotient-ligne > div:last-child{border-right:0;}
+.formule-quotient-fonction,.formule-quotient-derivee{font-weight:600;}
+@media (max-width:560px){
+  .formule-livre-titre{font-size:.98rem;}
+  .formule-quotient-ligne{grid-template-columns:.8fr 1.45fr .85fr;}
+  .formule-quotient-ligne > div{padding:9px 5px;font-size:.88rem;}
+}
+
+/* Chaque popup de l’Activité 4 est indépendant. */
+.popup-cours41 > .theoreme-cache,
+.popup-variations > .theoreme-cache{
+  display:none;
+}
+@media (hover:hover) and (pointer:fine){
+  .popup-cours41:hover > .theoreme-cache,
+  .popup-variations:hover > .theoreme-cache{
+    display:block;
+  }
+}
+@media (hover:none), (pointer:coarse){
+  .popup-cours41.ouvert > .theoreme-cache,
+  .popup-variations.ouvert > .theoreme-cache{
+    display:block;
+  }
+}
+
+/* Le cours de la page 41 garde le bleu du livre. */
+.popup-cours41 .theoreme-question{
+  background:#b9e2f4;
+  border-top:1px solid #55bde5;
+  border-bottom:1px solid #55bde5;
+}
+
+/* =====================================================
+   Theorem
+===================================================== */
 .theoreme-rollover{
   margin:18px 0;
   position:relative;
@@ -631,7 +864,7 @@ mjx-container[display="true"]{
     padding:7px 4px;
   }
 
-  .aide-contenu{
+  .remarque-cache{
     max-width:100%;
     overflow-x:hidden;
   }
@@ -741,6 +974,35 @@ mjx-container[display="true"]{
 }
 
 /* =====================================================
+   DÉMONSTRATION — remarque intégrée
+===================================================== */
+.demonstration{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  margin:18px 0;
+  padding:12px clamp(9px,2vw,16px);
+  background:#fff;
+  border-left:3px solid #777;
+  overflow:hidden;
+}
+
+.demonstration-titre{
+  font-weight:bold;
+  font-size:clamp(16px,2.3vw,18px);
+  margin-bottom:8px;
+}
+
+.demonstration p{
+  margin:9px 0;
+  overflow-wrap:anywhere;
+}
+
+.demonstration .remarque-rollover{
+  margin:10px 0 2px;
+}
+
+/* =====================================================
    THÉORÈME STATIQUE — STYLE DU LIVRE PAGE 12
 ===================================================== */
 .theoreme-livre{
@@ -802,6 +1064,68 @@ mjx-container[display="true"]{
 }
 
 /* =====================================================
+   COURS CONTINUITÉ — STYLE LIVRE (ROSE)
+===================================================== */
+.cours-rose{
+  width:100%;
+  max-width:100%;
+}
+
+.cours-rose .theoreme-question{
+  font-style:italic;
+}
+
+.cours-rose .theoreme-cache{
+  background:transparent;
+  border:0;
+  padding:0;
+  overflow:hidden;
+}
+
+.cours-livre-titre{
+  color:#159dcc;
+  font-family:"Times New Roman",Georgia,serif;
+  font-size:clamp(19px,3vw,24px);
+  font-weight:bold;
+  line-height:1.1;
+  padding:0 0 4px 2px;
+}
+
+.cours-livre-corps{
+  width:100%;
+  max-width:100%;
+  background:#f3c6d2;
+  padding:8px clamp(10px,2vw,16px) 9px;
+  color:#222;
+  font-family:"Times New Roman",Georgia,serif;
+  font-size:clamp(15px,2.2vw,18px);
+  line-height:1.45;
+}
+
+.cours-puce{
+  display:flex;
+  align-items:flex-start;
+  gap:7px;
+  margin:1px 0;
+}
+
+.cours-puce > span:first-child{
+  flex:0 0 auto;
+  font-weight:bold;
+}
+
+.cours-puce > span:last-child{
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+
+.cours-livre-corps mjx-container[display="true"]{
+  max-width:100% !important;
+  overflow-x:auto !important;
+}
+
+/* =====================================================
    THÉORÈME PAGE 13 — EXISTENCE ET UNICITÉ
 ===================================================== */
 .theoreme-livre-texte{
@@ -812,6 +1136,102 @@ mjx-container[display="true"]{
 
 .theoreme-livre-texte strong{
   font-weight:bold;
+}
+
+
+/* =====================================================
+   TABLEAU DU THÉORÈME — ZÉRO DÉBORDEMENT SUR SMARTPHONE
+===================================================== */
+@media (max-width:560px){
+  .table-scroll{overflow-x:visible !important;}
+  .table-theoreme{table-layout:fixed; width:100% !important; font-size:12px;}
+  .table-theoreme td,.table-theoreme th{padding:6px 4px !important;}
+  .table-theoreme .cas-utilise{font-size:11.5px;}
+  .table-theoreme .cas-utilise mjx-container{font-size:90%;}
+
+
+  .table-scroll{
+    width:100%;
+    max-width:100%;
+    overflow:visible;
+  }
+
+  .table-scroll .table-theoreme{
+    width:100%;
+    min-width:0;
+    table-layout:auto;
+    display:block;
+    border-collapse:separate;
+  }
+
+  .table-scroll .table-theoreme tr:first-child{
+    display:none;
+  }
+
+  .table-scroll .table-theoreme tbody,
+  .table-scroll .table-theoreme tr{
+    display:block;
+    width:100%;
+  }
+
+  .table-scroll .table-theoreme tr{
+    margin:10px 0;
+    border:1px solid #9ccddd;
+    background:var(--blue-pale);
+    border-radius:4px;
+    overflow:hidden;
+  }
+
+  .table-scroll .table-theoreme td{
+    display:block;
+    width:100%;
+    min-width:0;
+    border:0;
+    border-bottom:1px solid white;
+    padding:8px 9px;
+    text-align:left;
+    overflow-wrap:anywhere;
+  }
+
+  .table-scroll .table-theoreme td:last-child{
+    border-bottom:0;
+  }
+
+  .table-scroll .table-theoreme td::before{
+    content:attr(data-label);
+    display:block;
+    margin-bottom:3px;
+    font-size:11px;
+    font-weight:bold;
+    color:#555;
+  }
+
+  .table-scroll .table-theoreme .cas-utilise{
+    border:0;
+    border-left:3px solid var(--red);
+    color:var(--red);
+  }
+
+  .table-scroll .table-theoreme .cas-utilise::before{
+    color:var(--red);
+  }
+}
+
+/* Remarque : sur écran tactile, le rollover est ouvert au toucher. */
+@media (hover:none), (pointer:coarse){
+  .remarque-rollover:hover .remarque-cache{
+    display:none;
+  }
+
+  .remarque-rollover.ouverte .remarque-cache{
+    display:block;
+  }
+}
+
+@media (hover:hover) and (pointer:fine){
+  .remarque-rollover:hover .remarque-cache{
+    display:block;
+  }
 }
 
 /* =====================================================
@@ -881,6 +1301,157 @@ mjx-container[display="true"]{
     display:block !important;
   }
 }
+
+/* Sécurité finale contre les débordements */
+*, *::before, *::after{
+  max-width:100%;
+}
+
+img, svg, video, canvas{
+  max-width:100%;
+  height:auto;
+}
+
+.enonce-livre mjx-container[display="true"],
+.activite mjx-container[display="true"],
+.synthese mjx-container[display="true"],
+.etape-suivante mjx-container[display="true"]{
+  max-width:100% !important;
+  overflow-x:auto !important;
+  -webkit-overflow-scrolling:touch;
+}
+
+@media (max-width:430px){
+  .remarque-rollover{
+    margin:13px 0;
+  }
+
+  .remarque-question{
+    font-size:12.5px;
+    padding:8px 4px;
+  }
+
+  .remarque-cache{
+    padding:8px 7px;
+    font-size:13px;
+    line-height:1.45;
+  }
+}
+
+
+/* Le cours/théorème reste le bloc suivant la démonstration. */
+.demonstration + .theoreme-rollover{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+}
+
+.theoreme-texte .theoreme-puce{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  margin:7px 0;
+}
+
+.theoreme-texte .theoreme-puce > span:last-child{
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+
+@media (max-width:430px){
+  .demonstration{
+    padding:9px 7px;
+    font-size:14px;
+  }
+
+  .demonstration-titre{
+    font-size:16px;
+  }
+
+  .theoreme-texte .theoreme-puce{
+    gap:6px;
+  }
+}
+
+
+/* =====================================================
+   THÉORÈME PAGE 47 — POPUP BLEU, COMME LES AUTRES
+===================================================== */
+.theoreme-page47{
+  margin:18px 0;
+  position:relative;
+}
+.theoreme-page47 .theoreme-question{
+  display:block;
+  padding:10px;
+  border-top:1px solid #888;
+  border-bottom:1px solid #888;
+  color:#333;
+  font-weight:bold;
+  font-style:italic;
+  cursor:pointer;
+}
+.theoreme-page47 .theoreme-cache{
+  display:none;
+  margin-top:7px;
+  padding:13px clamp(10px,2vw,16px);
+  background:#eaf5f9;
+  border-left:4px solid #22a9d6;
+  border-right:1px solid #b5dce9;
+  overflow-x:auto;
+}
+@media (hover:hover) and (pointer:fine){
+  .theoreme-page47:hover > .theoreme-cache{
+    display:block;
+  }
+}
+@media (hover:none), (pointer:coarse){
+  .theoreme-page47.ouvert > .theoreme-cache{
+    display:block;
+  }
+}
+
+/* =====================================================
+   INTRODUCTION — COMPOSITION ET FONCTION RÉCIPROQUE
+===================================================== */
+.composition-reciproque{
+  margin:28px 0;
+  padding:clamp(12px,2.2vw,18px);
+  background:#fafaf6;
+  border:1px solid #999;
+  border-left:4px solid #159dcc;
+  overflow:hidden;
+}
+.composition-reciproque .activite-titre{
+  color:#159dcc;
+}
+.graphe-reciproque{
+  width:100%;
+  max-width:700px;
+  margin:16px auto;
+  padding:8px;
+  background:#fff;
+  border:1px solid #b8b8b8;
+  overflow:hidden;
+}
+.graphe-reciproque svg{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.composition-reciproque .ligne-resultat{
+  margin:14px 0;
+  padding:10px;
+  background:#eaf5f9;
+  border-left:3px solid #159dcc;
+  overflow-x:auto;
+}
+@media(max-width:430px){
+  .composition-reciproque{padding:10px 8px;}
+  .graphe-reciproque{padding:4px;}
+  .composition-reciproque .ligne-resultat{padding:8px 6px;}
+}
+
 </style>
 
 </head>
@@ -1152,66 +1723,111 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
+    <!-- =================================================
+         DÉMONSTRATION — la remarque est intégrée ici
+         ================================================= -->
 
-        <div class="aide-question">
-            💡 Une petite aide ?
+    <div class="demonstration">
+
+        <div class="demonstration-titre">
+            Démonstration
         </div>
 
-        <div class="aide-contenu">
+        <p>
+            Pour les limites à l'infini, on compare les termes
+            de plus haut degré du numérateur et du dénominateur.
+        </p>
 
-            Pour les limites à l'infini, compare les termes
-            de plus haut degré.
+        <div class="remarque-rollover"
+             onclick="ouvrirRemarque(this)">
 
-            \[
-            \frac{x^2+1}{x^2+x+1}
-            \sim
-            \frac{x^2}{x^2}.
-            \]
+            <div class="remarque-question">
+                💡 Remarque / suggestion — passer la souris
+            </div>
 
-            <br>
+            <div class="remarque-cache">
 
-            Pour les limites en \(-1\) et \(1\),
-            vérifie d'abord la valeur du dénominateur.
+                Pour une limite à l'infini, on peut diviser
+                le numérateur et le dénominateur par \(x^2\) :
+
+                \[
+                \frac{x^2+1}{x^2+x+1}
+                =
+                \frac{1+\frac1{x^2}}
+                     {1+\frac1x+\frac1{x^2}}.
+                \]
+
+                <p>
+                    Lorsque \(x\to+\infty\) ou \(x\to-\infty\),
+                    on utilise :
+                </p>
+
+                \[
+                \frac1x\to0,
+                \qquad
+                \frac1{x^2}\to0.
+                \]
+
+                <p>
+                    Pour les limites en \(-1\) et \(1\), il suffit
+                    d'abord de vérifier que le dénominateur
+                    ne s'annule pas aux points considérés.
+                </p>
+
+            </div>
 
         </div>
 
     </div>
 
 
-    <div class="theoreme-livre">
+    <!-- =================================================
+         THÉORÈME / COURS — ROLLOVER
+         ================================================= -->
 
-        <div class="theoreme-livre-titre">
-            Théorème
-        </div>
+    <div class="theoreme-rollover">
 
-        <div class="theoreme-livre-corps">
+        <span class="theoreme-question">
+            📖 Théorème / Cours — passer la souris
+        </span>
 
-            <div class="theoreme-puce">
-                <span>•</span>
-                <div>
-                    La limite d'une fonction polynôme à l'infini
-                    est la même que celle de son terme de plus haut degré.
-                </div>
+        <div class="theoreme-cache">
+
+            <div class="theoreme-titre">
+                Théorème
             </div>
 
-            <div class="theoreme-puce">
-                <span>•</span>
-                <div>
-                    La limite d'une fonction rationnelle à l'infini
-                    est la même que celle du quotient des termes
-                    de plus haut degré.
+            <div class="theoreme-texte">
+
+                <div class="theoreme-puce">
+                    <span>•</span>
+                    <span>
+                        La limite d'une fonction polynôme à l'infini
+                        est la même que celle de son terme de plus haut degré.
+                    </span>
                 </div>
+
+                <div class="theoreme-puce">
+                    <span>•</span>
+                    <span>
+                        La limite d'une fonction rationnelle à l'infini
+                        est la même que celle du quotient des termes
+                        de plus haut degré.
+                    </span>
+                </div>
+
             </div>
 
-        </div>
+            <div class="theoreme-page">
+                📘 « Limites et continuités » — Sciences expérimentales — <b>page 6</b>
+            </div>
 
-        <div class="theoreme-livre-page">
-            📘 Cours — page 8
         </div>
 
     </div>
+
+
+
 
 
 </div>
@@ -1280,14 +1896,12 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
+    <div class="remarque-rollover"
+         onclick="ouvrirRemarque(this)">
 
-        <div class="aide-question">
-            💡 Quel résultat permet de conclure ?
-        </div>
+        <div class="remarque-question">💡 Remarque / suggestion — passer la souris</div>
 
-        <div class="aide-contenu">
+        <div class="remarque-cache">
 
             Le dénominateur est un polynôme.
 
@@ -1305,22 +1919,47 @@ x\in[-1,1]
     </div>
 
 
-    <div class="theoreme-rollover">
+    <!-- =================================================
+         COURS — ROLLOVER SOURIS
+         STYLE DU LIVRE : CONTINUITÉ
+         ================================================= -->
+
+    <div class="theoreme-rollover cours-rose">
 
         <span class="theoreme-question">
-            📖 Théorème utilisé — passer la souris
+            📖 Cours — passer la souris
         </span>
 
         <div class="theoreme-cache">
 
-            <div class="theoreme-titre">
-                Continuité d'une fonction rationnelle
+            <div class="cours-livre-titre">
+                Cours
             </div>
 
-            <div class="theoreme-texte">
+            <div class="cours-livre-corps">
 
-                Une fonction rationnelle est continue sur tout
-                intervalle inclus dans son domaine de définition.
+                <div class="cours-puce">
+                    <span>•</span>
+                    <span>
+                        Toute fonction polynôme est continue en tout réel.
+                    </span>
+                </div>
+
+                <div class="cours-puce">
+                    <span>•</span>
+                    <span>
+                        Toute fonction rationnelle est continue en tout réel
+                        de son ensemble de définition.
+                    </span>
+                </div>
+
+                <div class="cours-puce">
+                    <span>•</span>
+                    <span>
+                        Les fonctions \(x\mapsto\cos x\) et
+                        \(x\mapsto\sin x\) sont continues en tout réel.
+                    </span>
+                </div>
 
             </div>
 
@@ -1448,75 +2087,169 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
-
-        <div class="aide-question">
-            💡 Pour étudier le signe...
+    <!-- FORMULE DU LIVRE — visible directement, hors popup -->
+    <div class="formule-livre-derivabilite">
+        <div class="formule-livre-titre">Opérations sur les fonctions dérivables</div>
+        <div class="formule-livre-intro">Soit <em>f</em> et <em>g</em> deux fonctions dérivables sur un intervalle <em>I</em>.</div>
+        <div class="formule-quotient-ligne">
+            <div class="formule-quotient-fonction">\(\displaystyle\dfrac{f}{g}\)</div>
+            <div class="formule-quotient-intervalle">\(\displaystyle\text{Tout intervalle inclus dans }\{x\in I\ ;\ g(x)\ne0\}\)</div>
+            <div class="formule-quotient-derivee">\(\displaystyle\dfrac{f'g-g'f}{g^2}\)</div>
         </div>
+    </div>
 
-        <div class="aide-contenu">
 
-            Sur \([-1,1]\),
+    <!-- DÉMONSTRATION — visible directement, hors des popups -->
+    <div class="demonstration">
 
-            \[
-            x^2-1\leq0.
-            \]
+        <div class="demonstration-titre">Calcul de la dérivée avec la formule du quotient</div>
 
-            De plus,
+        On pose :
 
-            \[
-            (x^2+x+1)^2>0.
-            \]
+        \[
+        f(x)=x^2+1,\qquad g(x)=x^2+x+1.
+        \]
 
-            Donc :
+        D'après la formule :
 
-            \[
-            f'(x)\leq0.
-            \]
+        \[
+        f'(x)=\frac{(x^2+1)'(x^2+x+1)-(x^2+x+1)'(x^2+1)}{(x^2+x+1)^2}.
+        \]
 
-            Pour \(-1<x<1\),
+        Or :
 
-            \[
-            f'(x)<0.
-            \]
+        \[
+        (x^2+1)'=2x,\qquad (x^2+x+1)'=2x+1.
+        \]
 
+        Donc :
+
+        \[
+        f'(x)=\frac{2x(x^2+x+1)-(2x+1)(x^2+1)}{(x^2+x+1)^2}.
+        \]
+
+        En développant et en réduisant :
+
+        \[
+        \boxed{f'(x)=\frac{x^2-1}{(x^2+x+1)^2}}.
+        \]
+
+    </div>
+
+        <div class="demonstration-titre">Démonstration</div>
+
+        Sur \([-1,1]\),
+
+        \[
+        x^2-1\leq0.
+        \]
+
+        De plus,
+
+        \[
+        (x^2+x+1)^2>0.
+        \]
+
+        Donc :
+
+        \[
+        f'(x)\leq0.
+        \]
+
+        Pour \(-1<x<1\),
+
+        \[
+        f'(x)<0.
+        \]
+
+    </div>
+
+
+    <!-- REMARQUE — popup indépendant -->
+    <div class="remarque-rollover"
+         onclick="ouvrirRemarque(this)">
+
+        <div class="remarque-question">💡 Remarque / suggestion — passer la souris</div>
+
+        <div class="remarque-cache">
+            Pour conclure à une décroissance stricte, on utilise le signe strict de \(f'(x)\)
+            sur l'intervalle ouvert \((-1,1)\).
         </div>
 
     </div>
 
 
-    <div class="theoreme-rollover">
+    <!-- COURS — DÉRIVABILITÉ — LIVRE SCIENCES EXPÉRIMENTALES PAGE 41 -->
+    <div class="popup-rollover popup-cours41 cours-derivabilite-page41">
 
         <span class="theoreme-question">
-            📖 Théorème utilisé — passer la souris
+            📖 Cours — Dérivabilité — page 41 — passer la souris
         </span>
 
-        <div class="theoreme-cache">
+        <div class="theoreme-cache cours-page41-corps">
 
-            <div class="theoreme-titre">
-                Signe de la dérivée et variations
+            <div class="cours-page41-titre">
+                Opérations sur les fonctions dérivables
             </div>
 
-            <div class="theoreme-texte">
+            <div class="cours-page41-intro">
+                Soit <em>f</em> et <em>g</em> deux fonctions dérivables sur un intervalle <em>I</em>.
+            </div>
 
-                Si \(f'(x)\geq0\) sur un intervalle,
-                alors \(f\) y est croissante.
+            <div class="table-scroll cours-page41-table-scroll">
+                <table class="table-theoreme cours-page41-table">
+                    <thead>
+                        <tr>
+                            <th>Fonction</th>
+                            <th>Intervalle</th>
+                            <th>Fonction dérivée</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Fonction">\(f+g\)</td>
+                            <td data-label="Intervalle">\(I\)</td>
+                            <td data-label="Fonction dérivée">\(f'+g'\)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Fonction">\(af\quad(a\in\mathbb R)\)</td>
+                            <td data-label="Intervalle">\(I\)</td>
+                            <td data-label="Fonction dérivée">\(af'\)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Fonction">\(f\times g\)</td>
+                            <td data-label="Intervalle">\(I\)</td>
+                            <td data-label="Fonction dérivée">\(f'\times g+g'\times f\)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Fonction">\(\dfrac1f\)</td>
+                            <td data-label="Intervalle">Tout intervalle inclus dans \(\{x\in I\ ;\ f(x)\ne0\}\)</td>
+                            <td data-label="Fonction dérivée">\(\dfrac{-f'}{f^2}\)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Fonction">\(\dfrac fg\)</td>
+                            <td data-label="Intervalle">Tout intervalle inclus dans \(\{x\in I\;\ g(x)\ne0\}\)</td>
+                            <td data-label="Fonction dérivée">\(\dfrac{f'g-g'f}{g^2}\)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Fonction">\(f^n,\ n\in\mathbb N\setminus\{0,1\}\)</td>
+                            <td data-label="Intervalle">\(I\)</td>
+                            <td data-label="Fonction dérivée">\(nf'f^{n-1}\)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Fonction">\(\dfrac1{f^n},\ n\in\mathbb N^*\)</td>
+                            <td data-label="Intervalle">Tout intervalle inclus dans \(\{x\in I\ ;\ f(x)\ne0\}\)</td>
+                            <td data-label="Fonction dérivée">\(-nf'f^{n-1}\)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <p>
-                    Si \(f'(x)\leq0\) sur un intervalle,
-                    alors \(f\) y est décroissante.
-                </p>
-
-                <p>
-                    Lorsque le signe est strict sur l'intervalle
-                    ouvert considéré, on obtient une variation stricte.
-                </p>
-
+            <div class="cours-page41-bas">
+                Dérivabilité — page 41
             </div>
 
         </div>
-
     </div>
 
 
@@ -1527,6 +2260,43 @@ x\in[-1,1]
         f\text{ est strictement décroissante sur }[-1,1].
         }
         \]
+
+    </div>
+
+
+    <div class="popup-rollover popup-variations">
+
+        <span class="theoreme-question">
+            📖 Théorème utilisé — Dérivabilité — page 47 — passer la souris
+        </span>
+
+        <div class="theoreme-cache">
+
+            <div class="theoreme-titre">
+                Théorème — Sens de variation d'une fonction dérivable
+            </div>
+
+            <div class="theoreme-texte">
+
+                Soit \(f\) une fonction dérivable sur un intervalle \(I\).
+
+                <p>
+                    Si \(f'\) est strictement positive sur \(I\),
+                    alors \(f\) est strictement croissante sur \(I\).
+                </p>
+
+                <p>
+                    Si \(f'\) est strictement négative sur \(I\),
+                    alors \(f\) est strictement décroissante sur \(I\).
+                </p>
+
+            </div>
+
+            <div class="theoreme-page">
+                📘 Bac Sciences expérimentales — Chapitre « Dérivabilité » — <b>page 47</b>
+            </div>
+
+        </div>
 
     </div>
 
@@ -1591,75 +2361,41 @@ x\in[-1,1]
 
                 <div class="table-scroll">
 
-                    <table class="table-theoreme">
-
-                    <tr>
+                    <table class="table-theoreme"><tr>
                         <th>Nature de \(f\)</th>
                         <th>Image de \([a,b]\)</th>
-                    </tr>
-
-                    <tr>
-                        <td>
+                    </tr><tr><td data-label="Nature de \(f\)">
                             \(f\) strictement croissante
-                        </td>
-
-                        <td>
+                        </td><td data-label="Image">
                             \[
                             f([a,b])=[f(a),f(b)]
                             \]
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="cas-utilise">
+                        </td></tr><tr><td class="cas-utilise" data-label="Nature de \(f\)">
                             \(f\) strictement décroissante
-                        </td>
-
-                        <td class="cas-utilise">
+                        </td><td class="cas-utilise" data-label="Image">
                             \[
                             \boxed{
                             f([a,b])=[f(b),f(a)]
                             }
                             \]
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
+                        </td></tr><tr><td data-label="Nature de l’intervalle">
                             \(I=[a,b[\)
-                        </td>
-
-                        <td>
+                        </td><td data-label="Image">
                             \[
                             [f(a),f(b)[
                             \quad\text{ou}\quad
                             ]f(b),f(a)]
                             \]
                             selon le sens de variation.
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
+                        </td></tr><tr><td data-label="Nature de l’intervalle">
                             \(I=]a,b]\)
-                        </td>
-
-                        <td>
+                        </td><td data-label="Image">
                             Intervalle de même nature.
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
+                        </td></tr><tr><td data-label="Nature de l’intervalle">
                             \(I=]a,b[\)
-                        </td>
-
-                        <td>
+                        </td><td data-label="Image">
                             Intervalle ouvert.
-                        </td>
-                    </tr>
-
-                    </table>
+                        </td></tr></table>
 
                 </div>
 
@@ -1907,38 +2643,58 @@ x\in[-1,1]
     </div>
 
 
-    <!-- THÉORÈME 2 — UNICITÉ — ROLLOVER -->
+</div>
 
-    <!-- THÉORÈME 2 — EXISTENCE ET UNICITÉ — STYLE LIVRE PAGE 13 -->
 
-    <div class="theoreme-livre">
+<!-- =====================================================
+     LE SECRET DE L'EXERCICE — MONOTONIE ET UNICITÉ
+===================================================== -->
 
-        <div class="theoreme-livre-titre">
-            Théorème
-        </div>
-
-        <div class="theoreme-livre-corps">
-
-            <div class="theoreme-livre-texte">
-                Soit \(f\) une fonction continue et strictement monotone
-                sur un intervalle \(I\).
-
-                <br>
-
-                Soit \(a\) et \(b\) deux réels de \(I\) tels que \(a<b\).
-                Alors pour tout réel \(k\) compris entre \(f(a)\) et
-                \(f(b)\), l'équation \(f(x)=k\) admet une
-                <strong>unique solution</strong> dans \([a,b]\).
-            </div>
-
-        </div>
-
-        <div class="theoreme-livre-page">
-            📘 Cours — <b>page 13</b>
-        </div>
-
+<div class="activite" style="margin-top:28px;">
+    <div class="activite-titre">
+        🔎 Le secret de l’exercice — Monotonie et unicité
     </div>
 
+    <div class="question">
+        <span class="numero">1.</span>
+        On sait que, sur \([-1,1]\), \(f'(x)\le 0\).
+        Étudier alors la monotonie de \(g(x)=f(x)-x\).
+    </div>
+
+    <div class="question">
+        <span class="numero">2.</span>
+        En déduire le nombre de solutions de l’équation \(g(x)=0\),
+        c’est-à-dire de l’équation \(f(x)=x\).
+    </div>
+
+    <div class="demonstration">
+        <div class="demonstration-titre">Démonstration</div>
+
+        <p>
+            Comme \(g(x)=f(x)-x\), on a \(g'(x)=f'(x)-1\).
+        </p>
+
+        <p>
+            Or, sur \([-1,1]\), on a \(f'(x)\le0\). Donc
+            \(g'(x)=f'(x)-1<0\).
+        </p>
+
+        <p>
+            Ainsi, \(g\) est <strong>strictement décroissante</strong> sur \([-1,1]\).
+        </p>
+
+        <p>
+            Une fonction strictement décroissante ne peut prendre une même valeur
+            qu’une seule fois. Par conséquent, l’équation \(g(x)=0\), lorsqu’elle
+            admet une solution, en admet <strong>une unique</strong>.
+        </p>
+
+        <p>
+            Comme \(g(0)=1>0\) et \(g(1)=\dfrac{2}{3}-1<0\), l’équation
+            \(g(x)=0\) admet bien une solution dans \((0,1)\). Elle est donc
+            <strong>unique</strong>.
+        </p>
+    </div>
 </div>
 
 
@@ -2009,14 +2765,12 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
+    <div class="remarque-rollover"
+         onclick="ouvrirRemarque(this)">
 
-        <div class="aide-question">
-            💡 Pour l'unicité de la solution...
-        </div>
+        <div class="remarque-question">💡 Remarque / suggestion — passer la souris</div>
 
-        <div class="aide-contenu">
+        <div class="remarque-cache">
 
             Puisque
 
@@ -2081,14 +2835,12 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
+    <div class="remarque-rollover"
+         onclick="ouvrirRemarque(this)">
 
-        <div class="aide-question">
-            💡 Compare \(p(2/3)\) et \(p(1)\).
-        </div>
+        <div class="remarque-question">💡 Remarque / suggestion — passer la souris</div>
 
-        <div class="aide-contenu">
+        <div class="remarque-cache">
 
             On a :
 
@@ -2351,14 +3103,12 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
+    <div class="remarque-rollover"
+         onclick="ouvrirRemarque(this)">
 
-        <div class="aide-question">
-            💡 Que signifie « strictement décroissante » ?
-        </div>
+        <div class="remarque-question">💡 Remarque / suggestion — passer la souris</div>
 
-        <div class="aide-contenu">
+        <div class="remarque-cache">
 
             Si
 
@@ -2447,14 +3197,12 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
+    <div class="remarque-rollover"
+         onclick="ouvrirRemarque(this)">
 
-        <div class="aide-question">
-            💡 Pense à l'image de l'intervalle.
-        </div>
+        <div class="remarque-question">💡 Remarque / suggestion — passer la souris</div>
 
-        <div class="aide-contenu">
+        <div class="remarque-cache">
 
             Puisque
 
@@ -2556,68 +3304,114 @@ x\in[-1,1]
 
 
 <!-- =====================================================
-     ÉTAPE SUIVANTE — FONCTION RÉCIPROQUE
+     NOUVEAUTÉ — COMPOSITION ET FONCTION RÉCIPROQUE
 ===================================================== -->
 
-<h2>
-    Étape suivante — Fonction réciproque
-</h2>
+<div class="composition-reciproque">
 
-
-<div class="etape-suivante">
+    <div class="activite-titre">
+        🔎 D'où vient la fonction réciproque ? — Composition et symétrie
+    </div>
 
     <p>
-        Maintenant que nous avons établi la bijection,
-        une nouvelle question apparaît naturellement :
+        Dans les activités précédentes, nous avons montré que
+        \(f\) réalise une bijection de \([-1,1]\) sur
+        \(\left[\frac23,2\right]\).
     </p>
 
-    \[
-    f(x)=y
-    \qquad\Longrightarrow\qquad
-    x=?
-    \]
+    <div class="question">
+        <span class="numero">1.</span>
+        Pour tout \(y\in\left[\frac23,2\right]\), que peut-on dire de
+        l'équation \(f(x)=y\) ?
+    </div>
 
-    <p>
-        Pour chaque
+    <div class="question">
+        <span class="numero">2.</span>
+        Si à chaque \(y\) on associe son unique antécédent \(x\),
+        peut-on définir une nouvelle fonction ?
+    </div>
+
+    <div class="question">
+        <span class="numero">3.</span>
+        Notons cette nouvelle fonction \(f^{-1}\).
+        Quel est alors son ensemble de départ et son ensemble d'arrivée ?
+    </div>
+
+    <div class="graphe-reciproque" aria-label="Courbe de f et de sa réciproque, symétriques par rapport à y=x">
+      <svg viewBox="0 0 600 420" role="img">
+        <rect x="0" y="0" width="600" height="420" fill="white"/>
+        <line x1="55" y1="375" x2="580" y2="375" stroke="#555" stroke-width="1.4"/>
+        <line x1="55" y1="375" x2="55" y2="20" stroke="#555" stroke-width="1.4"/>
+        <line x1="85" y1="350" x2="500" y2="70" stroke="#999" stroke-width="1.5" stroke-dasharray="7 6"/>
+        <text x="505" y="65" font-size="16" fill="#555">y=x</text>
+        <path d="M 86,41 L 108,43 L 130,52 L 152,66 L 174,86 L 196,108 L 218,128 L 240,145 L 262,158 L 284,167 L 307,173 L 329,177 L 351,179 L 373,180 L 395,180" fill="none" stroke="#159dcc" stroke-width="3"/>
+        <path d="M 343,145 L 344,160 L 345,175 L 348,190 L 354,205 L 362,220 L 376,235 L 395,250 L 420,265 L 450,280 L 482,295 L 512,309 L 533,324 L 546,339 L 549,354" fill="none" stroke="#d46a8a" stroke-width="3"/>
+        <text x="250" y="135" font-size="16" fill="#159dcc" font-weight="bold">C_f</text>
+        <text x="410" y="310" font-size="16" fill="#d46a8a" font-weight="bold">C_{f⁻¹}</text>
+        <text x="565" y="392" font-size="15" fill="#333">x</text>
+        <text x="38" y="30" font-size="15" fill="#333">y</text>
+      </svg>
+    </div>
+
+    <div class="question">
+        <span class="numero">4.</span>
+        Sur le graphique, que remarquez-vous entre \(C_f\) et \(C_{f^{-1}}\) ?
+    </div>
+
+    <div class="question">
+        <span class="numero">5.</span>
+        Si l'on part de \(x\), puis qu'on applique \(f\), puis \(f^{-1}\),
+        que retrouve-t-on ? Et si l'on part de \(y\), puis qu'on applique
+        \(f^{-1}\), puis \(f\) ?
+    </div>
+
+    <div class="demonstration">
+        <div class="demonstration-titre">Démonstration</div>
+
+        <p>
+            Pour \(x\in[-1,1]\), \(f(x)\in\left[\frac23,2\right]\).
+            Par définition de la réciproque,
+        </p>
 
         \[
-        y\in
-        \left[\frac23,2\right],
+        f^{-1}(f(x))=x.
         \]
 
-        il existe un unique
+        <p>
+            De même, pour \(y\in\left[\frac23,2\right]\),
+        </p>
 
         \[
-        x\in[-1,1]
+        f(f^{-1}(y))=y.
         \]
 
-        tel que
+        <p>
+            C'est précisément l'idée de la <strong>composition des fonctions</strong>.
+        </p>
 
+        <div class="ligne-resultat">
+            \[
+            \boxed{f^{-1}\circ f=\mathrm{Id}_{[-1,1]}}\qquad	ext{et}\qquad\boxed{f\circ f^{-1}=\mathrm{Id}_{[\frac23,2]}}
+            \]
+        </div>
+
+        <p>
+            Ainsi, la fonction réciproque n'apparaît pas par hasard :
+            elle vient directement de la <strong>bijection</strong> établie dans les
+            premières activités. Le graphique montre en plus que \(C_{f^{-1}}\)
+            est le symétrique de \(C_f\) par rapport à la droite \(y=x\).
+        </p>
+    </div>
+
+    <div class="resultat">
         \[
-        f(x)=y.
+        \boxed{\displaystyle f^{-1}:\left[\frac23,2\right]\longrightarrow[-1,1]}
         \]
-
-    </p>
-
-    <p>
-        Nous allons donc introduire progressivement la
-        <strong>fonction réciproque \(f^{-1}\)</strong>.
-    </p>
-
-    <p>
-        Cette nouvelle notion permettra ensuite de revenir
-        naturellement à la <strong>question 3</strong> de
-        l'Exercice 17 :
-    </p>
-
-    \[
-    \boxed{
-    \text{La fonction }f^{-1}\text{ est-elle dérivable en }
-    \frac23?
-    }
-    \]
+    </div>
 
 </div>
+
+
 <!-- =====================================================
      ACTIVITÉ 9 — FONCTION RÉCIPROQUE
 ===================================================== -->
@@ -2664,14 +3458,12 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
+    <div class="remarque-rollover"
+         onclick="ouvrirRemarque(this)">
 
-        <div class="aide-question">
-            💡 Rappelle-toi ce que signifie « bijection ».
-        </div>
+        <div class="remarque-question">💡 Remarque / suggestion — passer la souris</div>
 
-        <div class="aide-contenu">
+        <div class="remarque-cache">
 
             Pour chaque
 
@@ -2799,14 +3591,12 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
+    <div class="remarque-rollover"
+         onclick="ouvrirRemarque(this)">
 
-        <div class="aide-question">
-            💡 Une image et son antécédent sont simplement échangés.
-        </div>
+        <div class="remarque-question">💡 Remarque / suggestion — passer la souris</div>
 
-        <div class="aide-contenu">
+        <div class="remarque-cache">
 
             On a :
 
@@ -2898,14 +3688,12 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
+    <div class="remarque-rollover"
+         onclick="ouvrirRemarque(this)">
 
-        <div class="aide-question">
-            💡 Utilise la formule de \(f'(x)\) déjà obtenue.
-        </div>
+        <div class="remarque-question">💡 Remarque / suggestion — passer la souris</div>
 
-        <div class="aide-contenu">
+        <div class="remarque-cache">
 
             Nous avons obtenu :
 
@@ -2954,14 +3742,12 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
+    <div class="remarque-rollover"
+         onclick="ouvrirRemarque(this)">
 
-        <div class="aide-question">
-            💡 Attention au dénominateur.
-        </div>
+        <div class="remarque-question">💡 Remarque / suggestion — passer la souris</div>
 
-        <div class="aide-contenu">
+        <div class="remarque-cache">
 
             Puisque
 
@@ -3064,14 +3850,12 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
+    <div class="remarque-rollover"
+         onclick="ouvrirRemarque(this)">
 
-        <div class="aide-question">
-            💡 Mets les deux fractions au même dénominateur.
-        </div>
+        <div class="remarque-question">💡 Remarque / suggestion — passer la souris</div>
 
-        <div class="aide-contenu">
+        <div class="remarque-cache">
 
             On écrit :
 
@@ -3136,14 +3920,12 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
+    <div class="remarque-rollover"
+         onclick="ouvrirRemarque(this)">
 
-        <div class="aide-question">
-            💡 Observe le comportement du dénominateur.
-        </div>
+        <div class="remarque-question">💡 Remarque / suggestion — passer la souris</div>
 
-        <div class="aide-contenu">
+        <div class="remarque-cache">
 
             Lorsque
 
@@ -3189,14 +3971,12 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
+    <div class="remarque-rollover"
+         onclick="ouvrirRemarque(this)">
 
-        <div class="aide-question">
-            💡 Remplace \(f(x)-\frac23\) par son expression.
-        </div>
+        <div class="remarque-question">💡 Remarque / suggestion — passer la souris</div>
 
-        <div class="aide-contenu">
+        <div class="remarque-cache">
 
             On a :
 
@@ -3284,14 +4064,12 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
+    <div class="remarque-rollover"
+         onclick="ouvrirRemarque(this)">
 
-        <div class="aide-question">
-            💡 Utilise \(f^{-1}(f(x))=x\).
-        </div>
+        <div class="remarque-question">💡 Remarque / suggestion — passer la souris</div>
 
-        <div class="aide-contenu">
+        <div class="remarque-cache">
 
             Puisque
 
@@ -3434,14 +4212,12 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
+    <div class="remarque-rollover"
+         onclick="ouvrirRemarque(this)">
 
-        <div class="aide-question">
-            💡 Vérifie soigneusement les carrés et les dénominateurs.
-        </div>
+        <div class="remarque-question">💡 Remarque / suggestion — passer la souris</div>
 
-        <div class="aide-contenu">
+        <div class="remarque-cache">
 
             Pour \(x=-\frac12\) :
 
@@ -3576,14 +4352,12 @@ x\in[-1,1]
     </div>
 
 
-    <div class="aide"
-         onclick="ouvrirAide(this)">
+    <div class="remarque-rollover"
+         onclick="ouvrirRemarque(this)">
 
-        <div class="aide-question">
-            💡 Puis utilise la formule de la réciproque.
-        </div>
+        <div class="remarque-question">💡 Remarque / suggestion — passer la souris</div>
 
-        <div class="aide-contenu">
+        <div class="remarque-cache">
 
             Pour
 
@@ -3928,9 +4702,21 @@ x\in[-1,1]
 
 <script>
 
-function ouvrirAide(element) {
+function ouvrirRemarque(element) {
     element.classList.toggle("ouverte");
 }
+
+/* Rollover indépendant de l’Activité 4 : chaque titre
+   contrôle uniquement le bloc placé juste dessous. */
+document.querySelectorAll(".popup-rollover").forEach(function(bloc){
+    const titre = bloc.querySelector(":scope > .theoreme-question");
+    if(titre){
+        titre.addEventListener("click", function(e){
+            e.preventDefault();
+            bloc.classList.toggle("ouvert");
+        });
+    }
+});
 
 /* Sur téléphone : toucher le titre du théorème
    ouvre/ferme le rollover. Sur ordinateur, le survol
